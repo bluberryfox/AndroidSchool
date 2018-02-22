@@ -1,5 +1,6 @@
 package csu.iit.ru.showsinger
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -27,5 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun singerClicked(singer: Singer){
         Toast.makeText(this, "Clicked: ${singer.name}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, SingerInfo::class.java)
+        startActivity(intent)
     }
 }
