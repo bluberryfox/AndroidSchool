@@ -1,4 +1,4 @@
-package csu.iit.ru.showsinger
+package csu.iit.ru.showsinger.models
 
 /**
  * Created by user on 22.02.2018.

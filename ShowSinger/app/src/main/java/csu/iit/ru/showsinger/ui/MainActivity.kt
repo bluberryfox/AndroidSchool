@@ -1,4 +1,4 @@
-package csu.iit.ru.showsinger
+package csu.iit.ru.showsinger.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
 import android.widget.Toast
+import csu.iit.ru.showsinger.R
+import csu.iit.ru.showsinger.adapters.SingerAdapter
+import csu.iit.ru.showsinger.fragments.SingerInfo
+import csu.iit.ru.showsinger.models.Singer
 
 class MainActivity : AppCompatActivity() {
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -23,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         singers.add(Singer("Самое большое простое число"))
         singers.add(Singer("Наадя"))
 
-        var adapter = SingerAdapter(singers, {singer: Singer->singerClicked(singer)})
+        var adapter = SingerAdapter(singers, { singer: Singer -> singerClicked(singer) })
         rv.adapter = adapter
     }
     private fun singerClicked(singer: Singer){
