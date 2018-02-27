@@ -55,8 +55,8 @@ class HomePageUI: AnkoComponent<HomePageActivity>{
         navigationView {
             fitsSystemWindows = true
             setNavigationItemSelectedListener(ui.owner)
-            inflateHeaderView(R.layout.nav_header_home_page)
             inflateMenu(R.menu.activity_home_page_drawer)
+//            layout_marginTop="@dimen/abc_action_bar_default_height_material"
         }.lparams(height = matchParent, gravity = GravityCompat.START)
     }
 }
