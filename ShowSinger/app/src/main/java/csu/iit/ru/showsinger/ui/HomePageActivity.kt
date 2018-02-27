@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.LinearLayout
 import csu.iit.ru.showsinger.R
 import csu.iit.ru.showsinger.adapters.SingerAdapter
@@ -21,11 +22,15 @@ import org.jetbrains.anko.setContentView
 import org.jetbrains.anko.toast
 
 
+
+
 class HomePageActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawer: DrawerLayout
     private lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //какой-то дикий и странный костыль для статус бара. Не трогать, без него не работает
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         super.onCreate(savedInstanceState)
         var favoriteSinger = ArrayList<Singer>()
         favoriteSinger.add(Singer("Наадя"))

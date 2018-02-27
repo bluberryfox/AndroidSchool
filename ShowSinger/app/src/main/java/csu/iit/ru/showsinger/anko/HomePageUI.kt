@@ -20,7 +20,6 @@ import org.jetbrains.anko.support.v4.drawerLayout
 class HomePageUI: AnkoComponent<HomePageActivity>{
     override fun createView(ui: AnkoContext<HomePageActivity>)=with(ui) {
         drawerLayout {
-            fitsSystemWindows = true
             id = R.id.drawer_layout
             createAppBar(ui)
             createNavigationView(ui)
@@ -33,8 +32,8 @@ class HomePageUI: AnkoComponent<HomePageActivity>{
                 toolbar {
                     id = R.id.toolbar
                     popupTheme = R.style.AppTheme_PopupOverlay
-                    backgroundResource = R.color.colorPrimaryDark
-                    fitsSystemWindows=true
+                    backgroundResource = R.color.colorPrimary
+
                 }.lparams(width = matchParent) {
                     val tv = TypedValue()
                     if (ui.owner.theme.resolveAttribute(R.attr.actionBarSize, tv, true)) {
