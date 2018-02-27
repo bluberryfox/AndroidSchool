@@ -7,9 +7,10 @@ import csu.iit.ru.showsinger.R
 import csu.iit.ru.showsinger.ui.HomePageActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
-import org.jetbrains.anko.design.appBarLayout
 import org.jetbrains.anko.design.coordinatorLayout
 import org.jetbrains.anko.design.navigationView
+import org.jetbrains.anko.design.themedAppBarLayout
+import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4._DrawerLayout
 import org.jetbrains.anko.support.v4.drawerLayout
 
@@ -19,22 +20,20 @@ import org.jetbrains.anko.support.v4.drawerLayout
 class HomePageUI: AnkoComponent<HomePageActivity>{
     override fun createView(ui: AnkoContext<HomePageActivity>)=with(ui) {
         drawerLayout {
-            id = R.id.drawer_layout
-            //?
             fitsSystemWindows = true
+            id = R.id.drawer_layout
             createAppBar(ui)
             createNavigationView(ui)
-
         }
     }
-    fun _DrawerLayout.createAppBar(ui: AnkoContext<HomePageActivity>){
+    private fun _DrawerLayout.createAppBar(ui: AnkoContext<HomePageActivity>){
         coordinatorLayout {
             fitsSystemWindows = true
-            appBarLayout {
+            themedAppBarLayout(R.style.AppTheme_AppBarOverlay){
                 toolbar {
                     id = R.id.toolbar
                     popupTheme = R.style.AppTheme_PopupOverlay
-                    backgroundResource = R.color.colorPrimary
+                    backgroundResource = R.color.colorPrimaryDark
                     fitsSystemWindows=true
                 }.lparams(width = matchParent) {
                     val tv = TypedValue()
@@ -44,16 +43,16 @@ class HomePageUI: AnkoComponent<HomePageActivity>{
                 }
             }.lparams(width = matchParent)
 
-            relativeLayout {
-                horizontalPadding = resources.getDimensionPixelSize(R.dimen.activity_horizontal_margin)
-                verticalPadding = resources.getDimensionPixelSize(R.dimen.activity_vertical_margin)
-                textView("Hello World!")
+            linearLayout {
+                recyclerView{
+                    id = R.id.recyclerView
+                }.lparams(width=matchParent, height=matchParent)
             }.lparams(width = matchParent, height = matchParent) {
                 behavior = AppBarLayout.ScrollingViewBehavior()
             }
         }.lparams(width = matchParent, height = matchParent)
     }
-    fun _DrawerLayout.createNavigationView(ui: AnkoContext<HomePageActivity>) {
+    private fun _DrawerLayout.createNavigationView(ui: AnkoContext<HomePageActivity>) {
         navigationView {
             fitsSystemWindows = true
             setNavigationItemSelectedListener(ui.owner)
