@@ -2,6 +2,7 @@ package csu.iit.ru.showsinger.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -26,6 +27,13 @@ class MainActivity : AppCompatActivity() {
         } )
         rView.adapter = adapter
         rView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+
+        val float_button = findViewById<FloatingActionButton>(R.id.fab)
+        float_button.setOnClickListener({
+            val intent = Intent(this, SingerInfo::class.java)
+            startActivity(intent)
+        }
+        )
 
     }
     private fun prepareList(list : ArrayList<Singer>){
