@@ -1,27 +1,16 @@
 package csu.iit.ru.showsinger.fragments
 
-import android.app.Fragment
+import android.app.Activity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import csu.iit.ru.showsinger.R
 
 /**
  * Created by user on 22.02.2018.
  */
-class SingerInfo: Fragment() {
-    companion object {
-
-        fun newInstance(): SingerInfo {
-            return SingerInfo()
-        }
-    }
-
-    //3
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.singer_info, container, false)
+class SingerInfo: Activity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.singer_info)
     }
 
 }
