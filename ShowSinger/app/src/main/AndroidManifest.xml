@@ -15,7 +15,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity">
+            android:name=".ui.GenresActivity">
             </activity>
     </application>
 

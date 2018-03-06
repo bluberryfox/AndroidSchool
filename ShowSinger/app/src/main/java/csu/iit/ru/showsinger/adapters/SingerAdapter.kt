@@ -29,7 +29,9 @@ class SingerAdapter(val singers: ArrayList<Singer>, val clickListener: (Singer) 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(singer: Singer, clickListener: (Singer) -> Unit) {
-            itemView.singerName.text = singer.name
+            itemView.title.text = singer.name
+            itemView.count.text = "${singer.numOfSongs} songs"
+            itemView.thumbnail.setImageResource(singer.thumbnail)
             itemView.setOnClickListener {
                 clickListener(singer)
             }

@@ -1,5 +1,6 @@
 package csu.iit.ru.showsinger.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -14,7 +15,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import csu.iit.ru.showsinger.R
-import csu.iit.ru.showsinger.adapters.SingerAdapter
+import csu.iit.ru.showsinger.adapters.HomePageAdapter
 import csu.iit.ru.showsinger.anko.HomePageUI
 import csu.iit.ru.showsinger.models.Singer
 import org.jetbrains.anko.find
@@ -32,15 +33,26 @@ class HomePageActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         //какой-то дикий и странный костыль для статус бара. Не трогать, без него не работает
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         super.onCreate(savedInstanceState)
-        var favoriteSinger = ArrayList<Singer>()
-        favoriteSinger.add(Singer("Наадя"))
-        favoriteSinger.add(Singer("Самое большое простое число"))
-        favoriteSinger.add(Singer("Валентин Стрыкало"))
-        favoriteSinger.add(Singer("The Matrixx"))
+        var list = ArrayList<Singer>()
+        list.add(Singer("What is", 2, R.drawable.album1))
+        list.add(Singer("No No", 2, R.drawable.album2))
+        list.add(Singer("Going on", 2, R.drawable.album3))
+        list.add(Singer("Keep it up", 2, R.drawable.album4))
+        list.add(Singer("Don't say", 2, R.drawable.album5))
+        list.add(Singer("What is", 2, R.drawable.album6))
+        list.add(Singer("No No", 2, R.drawable.album7))
+        list.add(Singer("Going on", 2, R.drawable.album8))
+        list.add(Singer("Keep it up", 2, R.drawable.album9))
+        list.add(Singer("Don't say", 2, R.drawable.album10))
         HomePageUI().setContentView(this)
         val recyclerview = find<RecyclerView>(R.id.recyclerView)
         recyclerview.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-        var adapter = SingerAdapter(favoriteSinger, { singer: Singer -> toast(singer.name) })
+        var adapter = HomePageAdapter(list, {
+            run {
+//                val intent = Intent(this, GenresActivity::class.java)
+//                startActivity(intent)
+            }
+        })
         recyclerview.adapter = adapter
         drawer = find<DrawerLayout>(R.id.drawer_layout)
         val toolbar = find<Toolbar>(R.id.toolbar)
