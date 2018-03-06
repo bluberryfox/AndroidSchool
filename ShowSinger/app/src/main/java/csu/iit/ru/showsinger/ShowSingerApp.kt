@@ -8,5 +8,6 @@ import android.app.Application
 class ShowSingerApp: Application(){
     override fun onCreate() {
         super.onCreate()
+        //на будущее под даггер
     }
 }

@@ -11,23 +11,18 @@ import kotlinx.android.synthetic.main.singer_items.view.*
 /**
  * Created by user on 26.02.2018.
  */
-class HomePageAdapter(val favoriteSingers: ArrayList<Singer>,  val clickListener: () -> Unit) : RecyclerView.Adapter<HomePageAdapter.ViewHolder>() {
-
+class SingerListAdapter(val singers: ArrayList<Singer>, private val singerCardClickListener: () -> Unit) : RecyclerView.Adapter<SingerListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        (holder as HomePageAdapter.ViewHolder).bind(favoriteSingers[position], clickListener)
-
-
+        (holder as SingerListAdapter.ViewHolder).bind(singers[position], singerCardClickListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view : View = LayoutInflater.from(parent!!.context).inflate(R.layout.singer_items, parent, false);
         return ViewHolder(view);
     }
-
-
     override fun getItemCount(): Int {
-        return favoriteSingers.size
+        return singers.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -43,26 +38,4 @@ class HomePageAdapter(val favoriteSingers: ArrayList<Singer>,  val clickListener
 
         }
     }
-//    class LunchCardUI:AnkoComponent<ViewGroup> {
-//        override fun createView(ui: AnkoContext<ViewGroup>)=with(ui) {
-//            linearLayout{
-//                cardView{
-//                    linearLayout{
-//                        padding = 10 //px
-//                        orientation = LinearLayout.VERTICAL
-//                        textView {
-//                            id = R.id.singerName
-//                            text = "Name"
-//                            //android:textAppearance = @style/Base.TextAppearance.AppCompat.Large //not support attribute
-//                        }.lparams(width = matchParent)
-//                    }.lparams(width = matchParent)
-//                }.lparams(width = matchParent) {
-//                    margin = dip(5)
-//                }
-//
-//
-//            }
-//        }
-  //  }
-
 }

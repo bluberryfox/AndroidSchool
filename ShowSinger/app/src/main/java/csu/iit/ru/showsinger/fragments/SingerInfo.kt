@@ -11,7 +11,17 @@ import csu.iit.ru.showsinger.R
  * Created by user on 22.02.2018.
  */
 class SingerInfo: Fragment() {
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    companion object {
+
+        fun newInstance(): SingerInfo {
+            return SingerInfo()
+        }
+    }
+
+    //3
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.singer_info, container, false)
     }
+
 }

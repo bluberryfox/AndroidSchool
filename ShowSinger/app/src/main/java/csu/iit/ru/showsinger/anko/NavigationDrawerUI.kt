@@ -4,7 +4,7 @@ import android.support.design.widget.AppBarLayout
 import android.support.v4.view.GravityCompat
 import android.util.TypedValue
 import csu.iit.ru.showsinger.R
-import csu.iit.ru.showsinger.ui.HomePageActivity
+import csu.iit.ru.showsinger.ui.MainActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
 import org.jetbrains.anko.design.coordinatorLayout
@@ -17,15 +17,16 @@ import org.jetbrains.anko.support.v4.drawerLayout
 /**
  * Created by user on 27.02.2018.
  */
-class HomePageUI: AnkoComponent<HomePageActivity>{
-    override fun createView(ui: AnkoContext<HomePageActivity>)=with(ui) {
+class NavigationDrawerUI : AnkoComponent<MainActivity>{
+    override fun createView(ui: AnkoContext<MainActivity>)=with(ui) {
         drawerLayout {
             id = R.id.drawer_layout
             createAppBar(ui)
             createNavigationView(ui)
         }
     }
-    private fun _DrawerLayout.createAppBar(ui: AnkoContext<HomePageActivity>){
+
+    private fun _DrawerLayout.createAppBar(ui: AnkoContext<MainActivity>){
         coordinatorLayout {
             fitsSystemWindows = true
             themedAppBarLayout(R.style.AppTheme_AppBarOverlay){
@@ -51,12 +52,11 @@ class HomePageUI: AnkoComponent<HomePageActivity>{
             }
         }.lparams(width = matchParent, height = matchParent)
     }
-    private fun _DrawerLayout.createNavigationView(ui: AnkoContext<HomePageActivity>) {
+    private fun _DrawerLayout.createNavigationView(ui: AnkoContext<MainActivity>) {
         navigationView {
             fitsSystemWindows = true
             setNavigationItemSelectedListener(ui.owner)
             inflateMenu(R.menu.activity_home_page_drawer)
-//            layout_marginTop="@dimen/abc_action_bar_default_height_material"
         }.lparams(height = matchParent, gravity = GravityCompat.START)
     }
 }
