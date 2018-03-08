@@ -1,4 +1,4 @@
-package csu.iit.ru.showsinger
+package app.bluberryfox.showsinger
 
 import org.junit.Test
 

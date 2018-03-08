@@ -1,25 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!-- This DrawerLayout has two children at the root  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="csu.iit.ru.showsinger.ui.MainActivity">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:scrollbars="vertical"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+    <include
+        layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content" />
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- TODO: ВЫТАЩИТЬ ПОД ТУЛБАР-->
 
 
-    </android.support.v7.widget.RecyclerView>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <!-- Этот LinearLayout отображает содержимое экрана -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- ActionBar отображается сверху -->
+
+
+        <!-- Основной контентный view, куда загружаются фрагменты -->
+        <FrameLayout
+            android:id="@+id/flContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical">
+            </android.support.v7.widget.RecyclerView>
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                android:src="@android:drawable/ic_input_add" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- navigation drawer, который появляется слева -->
+    <!-- Обратите внимание, что `android:layout_gravity` нужно установить в 'start' -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nvView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_input_add" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        app:menu="@menu/drawer_view" />
+</android.support.v4.widget.DrawerLayout>
+</LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>

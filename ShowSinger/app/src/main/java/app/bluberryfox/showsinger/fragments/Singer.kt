@@ -1,6 +1,6 @@
-package csu.iit.ru.showsinger.models
+package app.bluberryfox.showsinger.fragments
 
 /**
- * Created by user on 22.02.2018.
+ * Created by user on 08.03.2018.
  */
 class Singer(val name : String, val genre: String, val thumbnail : Int)
