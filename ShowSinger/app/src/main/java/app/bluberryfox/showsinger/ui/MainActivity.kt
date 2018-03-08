@@ -1,4 +1,4 @@
-package app.bluberryfox.showsinger
+package app.bluberryfox.showsinger.ui
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -15,7 +15,10 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.widget.LinearLayout
+import app.bluberryfox.showsinger.R
+import app.bluberryfox.showsinger.adapters.SingerListAdapter
 import app.bluberryfox.showsinger.fragments.*
+import app.bluberryfox.showsinger.models.Singer
 import java.util.*
 
 
@@ -40,10 +43,10 @@ class MainActivity : AppCompatActivity() {
         val list = ArrayList<Singer>()
         prepareList(list)
         val rView = findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter = SingerListAdapter( list, {
+        val adapter = SingerListAdapter(list, {
             var intent = Intent(this, SingerInfo::class.java)
             startActivity(intent)
-        } )
+        })
         rView.adapter = adapter
         rView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
@@ -108,8 +111,8 @@ class MainActivity : AppCompatActivity() {
         // на основе нажатия на элемент навигации
         var fragment: Fragment? = null
         when (menuItem.itemId) {
-            R.id.nav_first_fragment ->  SingersList::class.java
-            R.id.nav_second_fragment -> SecondFragment::class.java
+            R.id.nav_first_fragment ->  AllSingersList::class.java
+            R.id.nav_second_fragment -> HeardSingers::class.java
         }
 
 

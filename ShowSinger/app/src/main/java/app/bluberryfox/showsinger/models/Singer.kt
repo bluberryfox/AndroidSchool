@@ -1,4 +1,4 @@
-package app.bluberryfox.showsinger.fragments
+package app.bluberryfox.showsinger.models
 
 /**
  * Created by user on 08.03.2018.

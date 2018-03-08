@@ -1,10 +1,11 @@
-package app.bluberryfox.showsinger.fragments
+package app.bluberryfox.showsinger.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import app.bluberryfox.showsinger.R
+import app.bluberryfox.showsinger.models.Singer
 import kotlinx.android.synthetic.main.singer_items.view.*
 
 /**
@@ -13,7 +14,7 @@ import kotlinx.android.synthetic.main.singer_items.view.*
 class SingerListAdapter(val singers: ArrayList<Singer>, private val singerCardClickListener: () -> Unit) : RecyclerView.Adapter<SingerListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        (holder as SingerListAdapter.ViewHolder).bind(singers[position], singerCardClickListener)
+        (holder as ViewHolder).bind(singers[position], singerCardClickListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {

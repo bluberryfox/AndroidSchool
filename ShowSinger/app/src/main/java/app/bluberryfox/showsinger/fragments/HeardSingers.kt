@@ -5,6 +5,4 @@ import android.app.Fragment
 /**
  * Created by user on 08.03.2018.
  */
-class SingersList: Fragment(){
-
-}
+class HeardSingers :Fragment(){}
