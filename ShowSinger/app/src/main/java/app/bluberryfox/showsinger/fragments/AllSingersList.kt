@@ -1,5 +1,6 @@
 package app.bluberryfox.showsinger.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -10,6 +11,7 @@ import android.widget.LinearLayout
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.adapters.SingerListAdapter
 import app.bluberryfox.showsinger.models.Singer
+import app.bluberryfox.showsinger.ui.SingerInfo
 import kotlinx.android.synthetic.main.singers_list.*
 
 
@@ -31,15 +33,15 @@ class AllSingersList : Fragment(){
         val list = ArrayList<Singer>()
         prepareList(list)
         val adapter = SingerListAdapter(list, {
-//            var intent = Intent(this, SingerInfo::class.java)
-//            startActivity(intent)
+            val intent = Intent(view!!.context, SingerInfo::class.java)
+            startActivity(intent)
         })
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
 
         fab.setOnClickListener({
-//            val intent = Intent(this, SingerInfo::class.java)
-//            startActivity(intent)
+            val intent = Intent(view!!.context, SingerInfo::class.java)
+            startActivity(intent)
         }
         )
 

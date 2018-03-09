@@ -14,13 +14,10 @@ import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.fragments.AllSingersList
 import app.bluberryfox.showsinger.fragments.HeardSingers
 
-
-
-
 class MainActivity : AppCompatActivity() {
 
-    private var drawerLayout:DrawerLayout?=null
-    private var toolbar: Toolbar?=null
+    private var drawerLayout: DrawerLayout? = null
+    private var toolbar: Toolbar? = null
     private var nvDrawer: NavigationView? = null
     private var drawerToggle: ActionBarDrawerToggle? = null
 
@@ -38,14 +35,14 @@ class MainActivity : AppCompatActivity() {
         val headerLayout = nvDrawer?.getHeaderView(0)
         selectDrawerItem(nvDrawer?.menu!!.getItem(0))
     }
-    override fun onOptionsItemSelected(item: MenuItem):Boolean{
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
                 drawerLayout?.openDrawer(GravityCompat.START)
                 return true
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -59,18 +56,18 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         drawerToggle?.syncState()
     }
+
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         drawerToggle?.onConfigurationChanged(newConfig)
     }
 
     private fun selectDrawerItem(menuItem: MenuItem) {
-        // Создать новый фрагмент и задать фрагмент для отображения
-        // на основе нажатия на элемент навигации
         var fragment: Fragment? = null
         when (menuItem.itemId) {
             R.id.nav_first_fragment -> {
@@ -81,13 +78,8 @@ class MainActivity : AppCompatActivity() {
         }
         val fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit()
-
-        // Выделение существующего элемента выполнено с помощью
-        // NavigationView
         menuItem.isChecked = true
-        // Установить заголовок для action bar'а
         title = menuItem.title
-        // Закрыть navigation drawer
         drawerLayout?.closeDrawers()
     }
 
