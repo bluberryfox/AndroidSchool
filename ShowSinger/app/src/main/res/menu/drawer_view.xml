@@ -4,10 +4,10 @@
         <item
             android:id="@+id/nav_first_fragment"
             android:icon="@drawable/ic_launcher_background"
-            android:title="First" />
+            android:title="Все" />
         <item
             android:id="@+id/nav_second_fragment"
             android:icon="@drawable/ic_launcher_background"
-            android:title="Second" />
+            android:title="Прослушанные" />
     </group>
 </menu>
