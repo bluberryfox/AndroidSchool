@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         setupDrawerContent(nvDrawer)
         val headerLayout = nvDrawer?.getHeaderView(0)
+        selectDrawerItem(nvDrawer?.menu!!.getItem(0))
     }
     override fun onOptionsItemSelected(item: MenuItem):Boolean{
         when (item.itemId) {
