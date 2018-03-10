@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:yourapp="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_edit"
-        android:icon="@drawable/ic_keyboard_arrow_left_white"
-        android:title="@string/back"
-        yourapp:showAsAction="always" />
-    <item
         android:id="@+id/action_micro"
         android:title="@string/more"
         android:icon="@drawable/ic_more_vert_white"
