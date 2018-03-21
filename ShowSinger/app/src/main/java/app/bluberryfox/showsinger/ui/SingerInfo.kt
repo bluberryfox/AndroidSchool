@@ -16,7 +16,7 @@ class SingerInfo: AppCompatActivity(){
         setContentView(R.layout.singer_info)
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
         var img = findViewById<ImageView>(R.id.imageView)
-        img.setImageResource(R.drawable.album1)
+        img.setImageResource(R.drawable.ic_audiotrack)
 
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white)
         setSupportActionBar(toolbar)

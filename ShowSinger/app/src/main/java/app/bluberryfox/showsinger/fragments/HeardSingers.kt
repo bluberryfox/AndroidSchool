@@ -32,7 +32,7 @@ class HeardSingers : Fragment(){
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val list = ArrayList<Singer>()
-        prepareList(list)
+//        prepareList(list)
         val adapter = SingerListAdapter(list, {
             //            var intent = Intent(this, SingerInfo::class.java)
 //            startActivity(intent)
@@ -47,11 +47,11 @@ class HeardSingers : Fragment(){
 //        )
 
     }
-    private fun prepareList(list : ArrayList<Singer>){
-        list.add(Singer("ImagineDragons", "indi", R.drawable.album1))
-        list.add(Singer("Slipknot", "metal", R.drawable.album2))
-        list.add(Singer("System Of A Down", "rock", R.drawable.album3))
-        list.add(Singer("Daughter", "indi", R.drawable.album4))
-        list.add(Singer("Twenty One Pilots", "rock", R.drawable.album5))
-    }
+//    private fun prepareList(list : ArrayList<Singer>){
+//        list.add(Singer("ImagineDragons", "indi", R.drawable.album1))
+//        list.add(Singer("Slipknot", "metal", R.drawable.album2))
+//        list.add(Singer("System Of A Down", "rock", R.drawable.album3))
+//        list.add(Singer("Daughter", "indi", R.drawable.album4))
+//        list.add(Singer("Twenty One Pilots", "rock", R.drawable.album5))
+//    }
 }

@@ -1,6 +1,9 @@
 package app.bluberryfox.showsinger.models
 
+
 /**
  * Created by user on 08.03.2018.
  */
-class Singer(val name : String, val genre: String, val thumbnail : Int)
+data class Singer(val id: String, val name : String, val image : String, val genre: String){
+    class List : ArrayList<Singer>()
+}

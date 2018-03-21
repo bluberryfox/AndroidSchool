@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- This DrawerLayout has two children at the root  -->
+<?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,19 +17,12 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!-- TODO: ВЫТАЩИТЬ ПОД ТУЛБАР-->
 
-
-    <!-- Этот LinearLayout отображает содержимое экрана -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- ActionBar отображается сверху -->
-
-
-        <!-- Основной контентный view, куда загружаются фрагменты -->
         <FrameLayout
             android:id="@+id/flContent"
             android:layout_width="match_parent"
@@ -37,8 +30,6 @@
         </FrameLayout>
     </LinearLayout>
 
-    <!-- navigation drawer, который появляется слева -->
-    <!-- Обратите внимание, что `android:layout_gravity` нужно установить в 'start' -->
     <android.support.design.widget.NavigationView
         android:id="@+id/nvView"
         android:layout_width="wrap_content"

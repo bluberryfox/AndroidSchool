@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.models.Singer
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.singer_items.view.*
 
 /**
@@ -28,8 +29,9 @@ class SingerListAdapter(val singers: ArrayList<Singer>, private val singerCardCl
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(favoriteSinger: Singer, clickListener: () -> Unit) {
             itemView.title.text = favoriteSinger.name
-            itemView.genre.text = "${favoriteSinger.genre} songs"
-            itemView.thumbnail.setImageResource(favoriteSinger.thumbnail)
+            itemView.genre.text = favoriteSinger.genre
+//            itemView.thumbnail.setImageURI(Uri.parse("192.168.1.11/backend" + favoriteSinger.image))
+            Picasso.with(itemView.context).load("192.168.1.11/backend/" + favoriteSinger.image).into(itemView.thumbnail);
             itemView.card_view.setOnClickListener {
                 run {
                     clickListener()
