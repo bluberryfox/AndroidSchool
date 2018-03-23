@@ -25,12 +25,11 @@ class AllSingersList : Fragment(){
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.singers_list, container, false)
 
     }
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         Thread(Runnable {
@@ -41,8 +40,8 @@ class AllSingersList : Fragment(){
             val response = client.newCall(request).execute()
             val responseText = response.body()!!.string()
             var repos = Gson().fromJson(responseText, Singer.List::class.java)
-            getActivity().runOnUiThread {
-                val adapter = SingerListAdapter(repos, {
+            activity!!.runOnUiThread {
+                val adapter = SingerListAdapter( this.context!!, repos, {
                     val intent = Intent(view!!.context, SingerInfo::class.java)
                     startActivity(intent)
                 })

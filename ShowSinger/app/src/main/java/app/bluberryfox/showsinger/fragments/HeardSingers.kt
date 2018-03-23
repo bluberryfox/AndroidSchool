@@ -24,21 +24,21 @@ class HeardSingers : Fragment(){
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.singers_heard_list, container, false)
 
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val list = ArrayList<Singer>()
 //        prepareList(list)
-        val adapter = SingerListAdapter(list, {
+        val adapter = SingerListAdapter(this.context!!, list, {
             //            var intent = Intent(this, SingerInfo::class.java)
 //            startActivity(intent)
         })
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
+        recyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayout.VERTICAL, false)
 
 //        fab.setOnClickListener({
 //            //            val intent = Intent(this, SingerInfo::class.java)

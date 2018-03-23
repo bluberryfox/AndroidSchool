@@ -1,18 +1,22 @@
 package app.bluberryfox.showsinger.adapters
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.models.Singer
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.singer_items.view.*
 
 /**
  * Created by user on 08.03.2018.
  */
-class SingerListAdapter(val singers: ArrayList<Singer>, private val singerCardClickListener: () -> Unit) : RecyclerView.Adapter<SingerListAdapter.ViewHolder>() {
+class SingerListAdapter(context: Context, val singers: ArrayList<Singer>, private val singerCardClickListener: () -> Unit) : RecyclerView.Adapter<SingerListAdapter.ViewHolder>() {
+
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         (holder as ViewHolder).bind(singers[position], singerCardClickListener)
@@ -26,18 +30,21 @@ class SingerListAdapter(val singers: ArrayList<Singer>, private val singerCardCl
         return singers.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(favoriteSinger: Singer, clickListener: () -> Unit) {
             itemView.title.text = favoriteSinger.name
             itemView.genre.text = favoriteSinger.genre
-//            itemView.thumbnail.setImageURI(Uri.parse("192.168.1.11/backend" + favoriteSinger.image))
-            Picasso.with(itemView.context).load("192.168.1.11/backend/" + favoriteSinger.image).into(itemView.thumbnail);
+            Glide.with(itemView.context)
+                    .load("http://192.168.1.11/backend/"+favoriteSinger.image)
+                    .apply(RequestOptions.circleCropTransform())
+                    
+                    .into(itemView.thumbnail)
+            Log.d("картинка не грузится","http://192.168.1.11/backend/"+favoriteSinger.image)
             itemView.card_view.setOnClickListener {
                 run {
                     clickListener()
                 }
             }
-
         }
     }
 }
