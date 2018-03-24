@@ -2,7 +2,6 @@ package app.bluberryfox.showsinger.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import kotlinx.android.synthetic.main.singer_items.view.*
 /**
  * Created by user on 08.03.2018.
  */
-class SingerListAdapter(context: Context, val singers: ArrayList<Singer>, private val singerCardClickListener: () -> Unit) : RecyclerView.Adapter<SingerListAdapter.ViewHolder>() {
+class SingerListAdapter(context: Context, val singers: ArrayList<Singer>, val singerCardClickListener: (Singer)-> Unit) : RecyclerView.Adapter<SingerListAdapter.ViewHolder>() {
 
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
@@ -31,7 +30,7 @@ class SingerListAdapter(context: Context, val singers: ArrayList<Singer>, privat
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(favoriteSinger: Singer, clickListener: () -> Unit) {
+        fun bind(favoriteSinger: Singer, clickListener: (Singer) -> Unit) {
             itemView.title.text = favoriteSinger.name
             itemView.genre.text = favoriteSinger.genre
             Glide.with(itemView.context)
@@ -39,10 +38,9 @@ class SingerListAdapter(context: Context, val singers: ArrayList<Singer>, privat
                     .apply(RequestOptions.circleCropTransform())
                     
                     .into(itemView.thumbnail)
-            Log.d("картинка не грузится","http://192.168.1.11/backend/"+favoriteSinger.image)
             itemView.card_view.setOnClickListener {
                 run {
-                    clickListener()
+                    clickListener(favoriteSinger)
                 }
             }
         }

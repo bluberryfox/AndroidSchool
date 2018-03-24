@@ -16,10 +16,9 @@ import kotlinx.android.synthetic.main.singers_list.*
 /**
  * Created by user on 08.03.2018.
  */
-class HeardSingers : Fragment(){
-    //тут будут все послушанные композиции
+class HeardSingers : Fragment() {
     companion object {
-        fun newInstance():HeardSingers{
+        fun newInstance(): HeardSingers {
             return HeardSingers()
         }
     }
@@ -32,26 +31,10 @@ class HeardSingers : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val list = ArrayList<Singer>()
-//        prepareList(list)
         val adapter = SingerListAdapter(this.context!!, list, {
-            //            var intent = Intent(this, SingerInfo::class.java)
-//            startActivity(intent)
         })
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayout.VERTICAL, false)
 
-//        fab.setOnClickListener({
-//            //            val intent = Intent(this, SingerInfo::class.java)
-////            startActivity(intent)
-//        }
-//        )
-
     }
-//    private fun prepareList(list : ArrayList<Singer>){
-//        list.add(Singer("ImagineDragons", "indi", R.drawable.album1))
-//        list.add(Singer("Slipknot", "metal", R.drawable.album2))
-//        list.add(Singer("System Of A Down", "rock", R.drawable.album3))
-//        list.add(Singer("Daughter", "indi", R.drawable.album4))
-//        list.add(Singer("Twenty One Pilots", "rock", R.drawable.album5))
-//    }
 }
