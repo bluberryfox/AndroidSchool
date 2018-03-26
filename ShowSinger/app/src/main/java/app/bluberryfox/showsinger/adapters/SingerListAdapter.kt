@@ -36,7 +36,6 @@ class SingerListAdapter(context: Context, val singers: ArrayList<Singer>, val si
             Glide.with(itemView.context)
                     .load("http://192.168.1.11/backend/"+favoriteSinger.image)
                     .apply(RequestOptions.circleCropTransform())
-                    
                     .into(itemView.thumbnail)
             itemView.card_view.setOnClickListener {
                 run {

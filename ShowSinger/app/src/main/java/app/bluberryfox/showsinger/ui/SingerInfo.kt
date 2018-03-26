@@ -20,8 +20,8 @@ class SingerInfo: AppCompatActivity(){
         toolbar.backgroundColor = Color.TRANSPARENT
         var img = findViewById<ImageView>(R.id.imageView)
         img.setImageResource(R.drawable.fox)
-        val singer = getIntent().getStringExtra("singer_name")
-        toolbar.setTitle(singer)
+        val singer = intent.getStringExtra("singer_name")
+        toolbar.title = singer
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white)
         setSupportActionBar(toolbar)
     }
