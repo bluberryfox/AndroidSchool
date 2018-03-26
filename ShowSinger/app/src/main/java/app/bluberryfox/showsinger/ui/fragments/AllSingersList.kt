@@ -13,12 +13,13 @@ import app.bluberryfox.showsinger.adapters.SingerListAdapter
 import app.bluberryfox.showsinger.models.Singer
 import app.bluberryfox.showsinger.network.DataLoader
 import app.bluberryfox.showsinger.ui.activity.SingerInfo
+import app.bluberryfox.showsinger.ui.presenters.MainPresenter
 import kotlinx.android.synthetic.main.singers_list.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 
 
-class AllSingersList : Fragment() {
+class AllSingersList : Fragment(), MainPresenter.View {
     private val URL:String = "http://192.168.1.11/backend/"
     private val dataLoader= DataLoader()
     companion object {
@@ -26,13 +27,9 @@ class AllSingersList : Fragment() {
             return AllSingersList()
         }
     }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        return inflater?.inflate(R.layout.singers_list, container, false)
-
+        return inflater.inflate(R.layout.singers_list, container, false)
     }
-
 
     private fun showSinger(singers: ArrayList<Singer>){
         val adapter = SingerListAdapter(this.context!!, singers, URL) {
