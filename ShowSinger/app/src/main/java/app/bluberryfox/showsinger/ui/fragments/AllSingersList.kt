@@ -30,7 +30,6 @@ class AllSingersList : Fragment(), MainPresenter.View {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.singers_list, container, false)
     }
-
     private fun showSinger(singers: ArrayList<Singer>){
         val adapter = SingerListAdapter(this.context!!, singers, URL) {
             var intent = Intent(view!!.context, SingerInfo::class.java)
