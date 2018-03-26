@@ -18,7 +18,7 @@ class DataLoader{
                 .build()
         val response = client.newCall(request).execute()
         val responseText = response.body()!!.string()
-        var repos = Gson().fromJson(responseText, Singer.List::class.java)
-        repos
+        var singers = Gson().fromJson(responseText, Singer.List::class.java)
+        singers
     }
 }
