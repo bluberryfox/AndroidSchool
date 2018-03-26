@@ -15,39 +15,40 @@ import app.bluberryfox.showsinger.ui.fragments.AllSingersList
 import app.bluberryfox.showsinger.ui.fragments.HeardSingers
 
 class MainActivity : AppCompatActivity() {
-    private var drawerLayout: DrawerLayout? = null
-    private var toolbar: Toolbar? = null
-    private var nvDrawer: NavigationView? = null
-    private var drawerToggle: ActionBarDrawerToggle? = null
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var toolbar: Toolbar
+    private lateinit var nvDrawer: NavigationView
+    private lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
-        drawerToggle = setupDrawerToggle()
-        drawerLayout?.addDrawerListener(drawerToggle!!);
-        nvDrawer = findViewById<NavigationView>(R.id.nvView)
 
+        drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        drawerToggle = ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.drawer_open,
+                R.string.drawer_close)
+        drawerLayout.addDrawerListener(drawerToggle)
+        nvDrawer = findViewById<NavigationView>(R.id.nvView)
         setupDrawerContent(nvDrawer)
-        val headerLayout = nvDrawer?.getHeaderView(0)
-        selectDrawerItem(nvDrawer?.menu!!.getItem(0))
+        if (savedInstanceState == null) selectDrawerItem(nvDrawer.menu!!.getItem(0))
 
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                drawerLayout?.openDrawer(GravityCompat.START)
+                drawerLayout.openDrawer(GravityCompat.START)
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun setupDrawerToggle(): ActionBarDrawerToggle {
-        return ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close)
     }
 
     private fun setupDrawerContent(navigationView: NavigationView?) {
@@ -59,28 +60,28 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        drawerToggle?.syncState()
+        drawerToggle.syncState()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        drawerToggle?.onConfigurationChanged(newConfig)
+        drawerToggle.onConfigurationChanged(newConfig)
     }
 
     private fun selectDrawerItem(menuItem: MenuItem) {
         var fragment: Fragment? = null
-        when (menuItem.itemId) {
+        fragment = when (menuItem.itemId) {
             R.id.nav_first_fragment -> {
-                fragment = AllSingersList()
+                AllSingersList()
             }
-            R.id.nav_second_fragment -> fragment = HeardSingers()
-            else -> fragment = AllSingersList()
+            R.id.nav_second_fragment -> HeardSingers()
+            else -> AllSingersList()
         }
         val fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit()
         menuItem.isChecked = true
         title = menuItem.title
-        drawerLayout?.closeDrawers()
+        drawerLayout.closeDrawers()
     }
 
 }
