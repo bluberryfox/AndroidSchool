@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.singer_items.view.*
 /**
  * Created by user on 08.03.2018.
  */
-class SingerListAdapter(context: Context, val singers: ArrayList<Singer>, val singerCardClickListener: (Singer)-> Unit) : RecyclerView.Adapter<SingerListAdapter.ViewHolder>() {
+class SingerListAdapter(context: Context, val singers: ArrayList<Singer>,val url:String, private val singerCardClickListener: (Singer)-> Unit) : RecyclerView.Adapter<SingerListAdapter.ViewHolder>() {
 
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
@@ -34,7 +34,7 @@ class SingerListAdapter(context: Context, val singers: ArrayList<Singer>, val si
             itemView.title.text = favoriteSinger.name
             itemView.genre.text = favoriteSinger.genre
             Glide.with(itemView.context)
-                    .load("http://192.168.1.11/backend/"+favoriteSinger.image)
+                    .load( url + favoriteSinger.image)
                     .apply(RequestOptions.circleCropTransform())
                     .into(itemView.thumbnail)
             itemView.card_view.setOnClickListener {

@@ -1,4 +1,4 @@
-package app.bluberryfox.showsinger.ui
+package app.bluberryfox.showsinger.ui.activity
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -11,11 +11,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import app.bluberryfox.showsinger.R
-import app.bluberryfox.showsinger.fragments.AllSingersList
-import app.bluberryfox.showsinger.fragments.HeardSingers
+import app.bluberryfox.showsinger.ui.fragments.AllSingersList
+import app.bluberryfox.showsinger.ui.fragments.HeardSingers
 
 class MainActivity : AppCompatActivity() {
-
     private var drawerLayout: DrawerLayout? = null
     private var toolbar: Toolbar? = null
     private var nvDrawer: NavigationView? = null

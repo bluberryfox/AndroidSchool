@@ -11,11 +11,10 @@ import okhttp3.Request
  * Created by user on 26.03.2018.
  */
 class DataLoader{
-
-    fun loadDataAsync()=async(CommonPool){
+    fun loadDataAsync(url:String)=async(CommonPool){
         val client = OkHttpClient()
         val request = Request.Builder()
-                .url("http://192.168.1.11/backend/?controller=commonList")
+                .url("$url?controller=commonList")
                 .build()
         val response = client.newCall(request).execute()
         val responseText = response.body()!!.string()

@@ -1,4 +1,4 @@
-package app.bluberryfox.showsinger.ui
+package app.bluberryfox.showsinger.ui.activity
 
 import android.graphics.Color
 import android.os.Bundle

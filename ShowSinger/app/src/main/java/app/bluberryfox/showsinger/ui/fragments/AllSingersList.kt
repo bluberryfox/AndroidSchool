@@ -1,4 +1,4 @@
-package app.bluberryfox.showsinger.fragments
+package app.bluberryfox.showsinger.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,13 +12,14 @@ import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.adapters.SingerListAdapter
 import app.bluberryfox.showsinger.models.Singer
 import app.bluberryfox.showsinger.network.DataLoader
-import app.bluberryfox.showsinger.ui.SingerInfo
+import app.bluberryfox.showsinger.ui.activity.SingerInfo
 import kotlinx.android.synthetic.main.singers_list.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 
 
 class AllSingersList : Fragment() {
+    private val URL:String = "http://192.168.1.11/backend/"
     private val dataLoader= DataLoader()
     companion object {
         fun newInstance(): AllSingersList {
@@ -34,7 +35,7 @@ class AllSingersList : Fragment() {
 
 
     private fun showSinger(singers: ArrayList<Singer>){
-        val adapter = SingerListAdapter(this.context!!, singers) {
+        val adapter = SingerListAdapter(this.context!!, singers, URL) {
             var intent = Intent(view!!.context, SingerInfo::class.java)
             intent.putExtra("singer_name", it.name)
             startActivity(intent)
@@ -45,7 +46,7 @@ class AllSingersList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         launch(UI) {
-            val job = dataLoader.loadDataAsync()
+            val job = dataLoader.loadDataAsync(URL)
             showSinger(job.await())
         }
         recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
