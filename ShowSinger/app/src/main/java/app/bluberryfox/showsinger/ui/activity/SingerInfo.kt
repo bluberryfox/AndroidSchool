@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.view.Menu
 import android.widget.ImageView
 import app.bluberryfox.showsinger.R
 import org.jetbrains.anko.backgroundColor
@@ -22,13 +21,16 @@ class SingerInfo: AppCompatActivity(){
         img.setImageResource(R.drawable.fox)
         val singer = intent.getStringExtra("singer_name")
         toolbar.title = singer
-        toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white)
         setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+
     }
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.toolbar_view, menu)
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
         return true
     }
+
 
 
 }
