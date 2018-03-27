@@ -1,4 +1,4 @@
-package app.bluberryfox.showsinger.ui.activity
+package app.bluberryfox.showsinger.ui.main
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -11,10 +11,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import app.bluberryfox.showsinger.R
-import app.bluberryfox.showsinger.ui.fragments.AllSingersList
-import app.bluberryfox.showsinger.ui.fragments.HeardSingers
+import app.bluberryfox.showsinger.ui.main.allsingers.AllSingersFragment
+import app.bluberryfox.showsinger.ui.main.favoritesingers.FavoriteSingersFragment
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toolbar: Toolbar
     private lateinit var nvDrawer: NavigationView
@@ -52,8 +53,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupDrawerContent(navigationView: NavigationView?) {
-        navigationView?.setNavigationItemSelectedListener { menuItem ->
-            selectDrawerItem(menuItem)
+        navigationView?.setNavigationItemSelectedListener {
+            selectDrawerItem(it)
             true
         }
     }
@@ -69,13 +70,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun selectDrawerItem(menuItem: MenuItem) {
-        var fragment: Fragment? = null
-        fragment = when (menuItem.itemId) {
+        var fragment: Fragment? = when (menuItem.itemId) {
             R.id.nav_first_fragment -> {
-                AllSingersList()
+                AllSingersFragment()
             }
-            R.id.nav_second_fragment -> HeardSingers()
-            else -> AllSingersList()
+            R.id.nav_second_fragment -> FavoriteSingersFragment()
+            else -> AllSingersFragment()
         }
         val fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit()

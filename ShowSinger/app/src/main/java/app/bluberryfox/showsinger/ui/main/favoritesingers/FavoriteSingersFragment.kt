@@ -1,4 +1,4 @@
-package app.bluberryfox.showsinger.ui.fragments
+package app.bluberryfox.showsinger.ui.main.favoritesingers
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,10 +12,10 @@ import app.bluberryfox.showsinger.models.Singer
 /**
  * Created by user on 08.03.2018.
  */
-class HeardSingers : Fragment() {
+class FavoriteSingersFragment : Fragment() {
     companion object {
-        fun newInstance(): HeardSingers {
-            return HeardSingers()
+        fun newInstance(): FavoriteSingersFragment {
+            return FavoriteSingersFragment()
         }
     }
 

@@ -1,4 +1,4 @@
-package app.bluberryfox.showsinger.adapters
+package app.bluberryfox.showsinger.ui.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.singer_items.view.*
 /**
  * Created by user on 08.03.2018.
  */
-class SingerListAdapter(context: Context, val singers: ArrayList<Singer>,val url:String, private val singerCardClickListener: (Singer)-> Unit) : RecyclerView.Adapter<SingerListAdapter.ViewHolder>() {
+class SingerListAdapter(context: Context, val singers: Singer.List,val url:String, private val singerCardClickListener: (Singer)-> Unit) : RecyclerView.Adapter<SingerListAdapter.ViewHolder>() {
 
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
