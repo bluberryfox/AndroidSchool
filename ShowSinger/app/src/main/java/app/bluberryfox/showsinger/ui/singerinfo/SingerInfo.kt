@@ -11,7 +11,10 @@ import org.jetbrains.anko.backgroundColor
 /**
  * Created by user on 08.03.2018.
  */
-class SingerInfo: AppCompatActivity(){
+class SingerInfo: AppCompatActivity(), SingerInfoContract.View{
+
+
+    private var singerInfoPresenter = SingerInfoPresenter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.singer_info)
@@ -29,6 +32,20 @@ class SingerInfo: AppCompatActivity(){
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        singerInfoPresenter.attachView(this)
+    }
+
+    override fun onDestroy() {
+        singerInfoPresenter.detachView()
+        super.onDestroy()
+    }
+    
+    override fun showProgress() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 

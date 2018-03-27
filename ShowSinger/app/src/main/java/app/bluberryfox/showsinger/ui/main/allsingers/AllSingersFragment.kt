@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.models.Singer
 import app.bluberryfox.showsinger.ui.adapters.SingerListAdapter
@@ -43,6 +44,12 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         val intent = Intent(view!!.context, SingerInfo::class.java)
         intent.putExtra("singer_name", singer.name)
         startActivity(intent)
+    }
+    override fun showProgress(){
+
+    }
+    override fun showError(){
+        Toast.makeText(context, "Нет подключения к интернету", Toast.LENGTH_SHORT).show()
     }
 }
 

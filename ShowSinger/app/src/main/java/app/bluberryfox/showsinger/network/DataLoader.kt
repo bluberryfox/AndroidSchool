@@ -14,6 +14,7 @@ class DataLoader{
     fun loadDataAsync(url:String)=async(CommonPool){
         val client = OkHttpClient()
         val request = Request.Builder()
+                //TODO: error handling
                 .url("$url?controller=commonList")
                 .build()
         val response = client.newCall(request).execute()
