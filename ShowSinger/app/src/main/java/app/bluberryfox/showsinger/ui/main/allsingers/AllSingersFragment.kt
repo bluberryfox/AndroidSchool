@@ -9,47 +9,41 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import app.bluberryfox.showsinger.R
-import app.bluberryfox.showsinger.ui.adapters.SingerListAdapter
 import app.bluberryfox.showsinger.models.Singer
-import app.bluberryfox.showsinger.network.DataLoader
+import app.bluberryfox.showsinger.ui.adapters.SingerListAdapter
 import app.bluberryfox.showsinger.ui.singerinfo.SingerInfo
-import app.bluberryfox.showsinger.ui.presenters.MainPresenter
 import kotlinx.android.synthetic.main.singers_list.*
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.launch
 
 
-class AllSingersFragment : Fragment(), MainPresenter.View {
-    private val URL:String = "http://192.168.1.11/backend/"
-    private val dataLoader= DataLoader()
-    companion object {
-        fun newInstance(): AllSingersFragment {
-            return AllSingersFragment()
-        }
-    }
+class AllSingersFragment : Fragment(), AllSingersContract.View {
+    private var allSingersPresenter = AllSingersPresenter()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.singers_list, container, false)
     }
-    private fun showSinger(singers: Singer.List){
-        val adapter = SingerListAdapter(this.context!!, singers, URL) {
-            var intent = Intent(view!!.context, SingerInfo::class.java)
-            intent.putExtra("singer_name", it.name)
-            startActivity(intent)
+
+    override fun onResume() {
+        super.onResume()
+        allSingersPresenter.attachView(this)
+        recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
+    }
+    override fun onDestroy() {
+        allSingersPresenter.detachView()
+        super.onDestroy()
+    }
+
+    override fun showSingers(singers: Singer.List){
+        val adapter = SingerListAdapter(this.context!!, singers) {
+           showSingerInfo(it)
         }
         recyclerView.adapter = adapter
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        launch(UI) {
-            val job = dataLoader.loadDataAsync(URL)
-            showSinger(job.await())
-        }
-        recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
-
-}
-
-
+    override fun showSingerInfo(singer: Singer) {
+        val intent = Intent(view!!.context, SingerInfo::class.java)
+        intent.putExtra("singer_name", singer.name)
+        startActivity(intent)
+    }
 }
 
 
