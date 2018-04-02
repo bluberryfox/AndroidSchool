@@ -12,8 +12,6 @@ import app.bluberryfox.showsinger.models.Singer
  * Created by user on 08.03.2018.
  */
 class SingerListAdapter(context: Context, private val singers: Singer.List, private val singerCardClickListener: (Singer)-> Unit) : RecyclerView.Adapter<SingerListViewHolder>() {
-
-
     override fun onBindViewHolder(holder: SingerListViewHolder?, position: Int) {
         (holder as SingerListViewHolder).bind(singers[position], singerCardClickListener)
     }

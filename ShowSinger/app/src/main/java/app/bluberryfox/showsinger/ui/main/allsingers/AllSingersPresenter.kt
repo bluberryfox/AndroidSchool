@@ -14,7 +14,7 @@ class AllSingersPresenter:AllSingersContract.Presenter{
     override fun loadSingers() {
         launch(UI) {
             val job = dataLoader.loadDataAsync(Constants.URL)
-            singerView?.showSingers(job.await())
+            singerView?.loadSingers(job.await())
         }
     }
 

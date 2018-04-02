@@ -12,7 +12,7 @@ import android.widget.Toast
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.models.Singer
 import app.bluberryfox.showsinger.ui.adapters.SingerListAdapter
-import app.bluberryfox.showsinger.ui.singerinfo.SingerInfo
+import app.bluberryfox.showsinger.ui.singerinfo.SingerInfoActivity
 import kotlinx.android.synthetic.main.singers_list.*
 
 
@@ -33,7 +33,7 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         super.onDestroy()
     }
 
-    override fun showSingers(singers: Singer.List){
+    override fun loadSingers(singers: Singer.List){
         val adapter = SingerListAdapter(this.context!!, singers) {
            showSingerInfo(it)
         }
@@ -41,8 +41,10 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
     }
 
     override fun showSingerInfo(singer: Singer) {
-        val intent = Intent(view!!.context, SingerInfo::class.java)
+        val intent = Intent(view!!.context, SingerInfoActivity::class.java)
         intent.putExtra("singer_name", singer.name)
+        intent.putExtra("genre", singer.genre)
+        intent.putExtra("id", singer.id)
         startActivity(intent)
     }
     override fun showProgress(){

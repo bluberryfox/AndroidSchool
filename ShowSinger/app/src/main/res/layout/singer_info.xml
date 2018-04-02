@@ -40,12 +40,12 @@
                 android:text="Самая популярная песня" />
 
             <TextView
-                android:id="@+id/popularAlbum"
+                android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="10dp"
-                android:text="Самый популярный альбом" />
+                android:text="Описание" />
 
         </LinearLayout>
         <include

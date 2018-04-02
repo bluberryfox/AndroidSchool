@@ -1,6 +1,7 @@
 package app.bluberryfox.showsinger.network
 
 import app.bluberryfox.showsinger.models.Singer
+import app.bluberryfox.showsinger.models.SingerInfo
 import com.google.gson.Gson
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.async
@@ -20,6 +21,17 @@ class DataLoader{
         val response = client.newCall(request).execute()
         val responseText = response.body()!!.string()
         var singers = Gson().fromJson(responseText, Singer.List::class.java)
+        singers
+    }
+    fun loadSingerInfoAsync(url:String)=async(CommonPool){
+        val client = OkHttpClient()
+        val request = Request.Builder()
+                //TODO: error handling
+                .url("$url?controller=singer&id=1")
+                .build()
+        val response = client.newCall(request).execute()
+        val responseText = response.body()!!.string()
+        var singers = Gson().fromJson(responseText, SingerInfo::class.java)
         singers
     }
 }

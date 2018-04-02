@@ -13,7 +13,6 @@ import android.view.MenuItem
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.ui.main.allsingers.AllSingersFragment
 import app.bluberryfox.showsinger.ui.main.favoritesingers.FavoriteSingersFragment
-//нужно ли сюда mvp...
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout

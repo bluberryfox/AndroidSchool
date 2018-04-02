@@ -5,13 +5,22 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.ImageView
+import android.widget.TextView
 import app.bluberryfox.showsinger.R
+import app.bluberryfox.showsinger.models.SingerInfo
 import org.jetbrains.anko.backgroundColor
 
 /**
  * Created by user on 08.03.2018.
  */
-class SingerInfo: AppCompatActivity(), SingerInfoContract.View{
+class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
+    override fun showSingerInfo(singer: SingerInfo) {
+        var song = findViewById<TextView>(R.id.popularSong)
+        val desc  = findViewById<TextView>(R.id.description)
+        song.text = singer.song
+        desc.text  = singer.description
+
+    }
 
 
     private var singerInfoPresenter = SingerInfoPresenter()
@@ -43,11 +52,8 @@ class SingerInfo: AppCompatActivity(), SingerInfoContract.View{
         singerInfoPresenter.detachView()
         super.onDestroy()
     }
-    
+
     override fun showProgress() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
-
-
 }

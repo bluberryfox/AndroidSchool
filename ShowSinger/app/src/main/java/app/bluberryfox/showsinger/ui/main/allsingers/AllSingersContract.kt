@@ -9,7 +9,7 @@ import app.bluberryfox.showsinger.models.Singer
  */
 interface AllSingersContract{
     interface View: BaseView<Presenter> {
-        fun showSingers(singers: Singer.List)
+        fun loadSingers(singers: Singer.List)
         fun showSingerInfo(singer:Singer)
         fun showError()
         fun showProgress()
