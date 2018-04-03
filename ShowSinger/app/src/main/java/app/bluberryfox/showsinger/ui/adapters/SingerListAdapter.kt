@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import app.bluberryfox.showsinger.R
-import app.bluberryfox.showsinger.models.Singer
+import app.bluberryfox.showsinger.data.Singer
 
 /**
  * Created by user on 08.03.2018.

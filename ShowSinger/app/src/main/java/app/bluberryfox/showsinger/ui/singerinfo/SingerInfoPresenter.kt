@@ -1,7 +1,7 @@
 package app.bluberryfox.showsinger.ui.singerinfo
 
-import app.bluberryfox.showsinger.Constants
-import app.bluberryfox.showsinger.network.DataLoader
+import app.bluberryfox.showsinger.util.Constants
+import app.bluberryfox.showsinger.util.DataLoader
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 

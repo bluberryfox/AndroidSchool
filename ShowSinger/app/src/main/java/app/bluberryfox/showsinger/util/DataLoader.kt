@@ -1,7 +1,7 @@
-package app.bluberryfox.showsinger.network
+package app.bluberryfox.showsinger.util
 
-import app.bluberryfox.showsinger.models.Singer
-import app.bluberryfox.showsinger.models.SingerInfo
+import app.bluberryfox.showsinger.data.Singer
+import app.bluberryfox.showsinger.data.SingerInfo
 import com.google.gson.Gson
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.async
@@ -12,6 +12,7 @@ import okhttp3.Request
  * Created by user on 26.03.2018.
  */
 class DataLoader{
+    //TODO:когда знаешь про полиморфизм, но не используешь -__-
     fun loadDataAsync(url:String)=async(CommonPool){
         val client = OkHttpClient()
         val request = Request.Builder()

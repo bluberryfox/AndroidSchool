@@ -2,7 +2,7 @@ package app.bluberryfox.showsinger.ui.singerinfo
 
 import app.bluberryfox.showsinger.BasePresenter
 import app.bluberryfox.showsinger.BaseView
-import app.bluberryfox.showsinger.models.SingerInfo
+import app.bluberryfox.showsinger.data.SingerInfo
 
 /**
  * Created by user on 27.03.2018.

@@ -1,4 +1,4 @@
-package app.bluberryfox.showsinger
+package app.bluberryfox.showsinger.util
 
 /**
  * Created by user on 27.03.2018.

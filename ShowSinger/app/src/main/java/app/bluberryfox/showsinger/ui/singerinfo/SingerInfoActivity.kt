@@ -7,7 +7,9 @@ import android.support.v7.widget.Toolbar
 import android.widget.ImageView
 import android.widget.TextView
 import app.bluberryfox.showsinger.R
-import app.bluberryfox.showsinger.models.SingerInfo
+import app.bluberryfox.showsinger.data.SingerInfo
+import app.bluberryfox.showsinger.util.Constants
+import com.bumptech.glide.Glide
 import org.jetbrains.anko.backgroundColor
 
 /**
@@ -18,10 +20,12 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         return intent.getIntExtra("id", 0)
     }
     override fun showSingerInfo(singer: SingerInfo) {
-        var song = findViewById<TextView>(R.id.popularSong)
+        val song = findViewById<TextView>(R.id.popularSong)
         val desc  = findViewById<TextView>(R.id.description)
+        val image = findViewById<ImageView>(R.id.imageView)
         song.text = singer.song
         desc.text  = singer.description
+        Glide.with(this).load(Constants.URL + intent.getStringExtra("image")).into(image)
     }
     private var singerInfoPresenter = SingerInfoPresenter()
     override fun onCreate(savedInstanceState: Bundle?) {

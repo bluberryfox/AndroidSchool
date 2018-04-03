@@ -1,4 +1,4 @@
-package app.bluberryfox.showsinger.models
+package app.bluberryfox.showsinger.data
 
 
 /**

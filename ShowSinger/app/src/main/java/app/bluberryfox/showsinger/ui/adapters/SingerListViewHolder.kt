@@ -2,8 +2,8 @@ package app.bluberryfox.showsinger.ui.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import app.bluberryfox.showsinger.Constants
-import app.bluberryfox.showsinger.models.Singer
+import app.bluberryfox.showsinger.data.Singer
+import app.bluberryfox.showsinger.util.Constants
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.singer_items.view.*

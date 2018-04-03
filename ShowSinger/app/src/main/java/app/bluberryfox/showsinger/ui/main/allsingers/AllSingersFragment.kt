@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import app.bluberryfox.showsinger.R
-import app.bluberryfox.showsinger.models.Singer
+import app.bluberryfox.showsinger.data.Singer
 import app.bluberryfox.showsinger.ui.adapters.SingerListAdapter
 import app.bluberryfox.showsinger.ui.singerinfo.SingerInfoActivity
 import kotlinx.android.synthetic.main.singers_list.*
@@ -46,6 +46,7 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         intent.putExtra("singer_name", singer.name)
         intent.putExtra("genre", singer.genre)
         intent.putExtra("id", singer.id)
+        intent.putExtra("image", singer.image)
         startActivity(intent)
     }
 
