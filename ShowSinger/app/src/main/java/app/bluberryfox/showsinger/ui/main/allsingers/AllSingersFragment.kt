@@ -39,6 +39,7 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
             showSingerInfo(it)
         }
         recyclerView.adapter = adapter
+        //???adapter.notifyDataSetChanged()
     }
 
     override fun showSingerInfo(singer: Singer) {
@@ -53,7 +54,6 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
     override fun showProgress() {
 
     }
-
     override fun showError() {
         Toast.makeText(context, "Нет подключения к интернету", Toast.LENGTH_SHORT).show()
     }

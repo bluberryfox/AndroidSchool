@@ -23,7 +23,7 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         val song = findViewById<TextView>(R.id.popularSong)
         val desc  = findViewById<TextView>(R.id.description)
         val image = findViewById<ImageView>(R.id.imageView)
-        song.text = singer.song
+        song.text =  singer.song
         desc.text  = singer.description
         Glide.with(this).load(Constants.URL + intent.getStringExtra("image")).into(image)
     }

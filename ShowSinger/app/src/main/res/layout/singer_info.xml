@@ -24,14 +24,6 @@
                 android:src="@drawable/fox" />
 
             <TextView
-                android:id="@+id/singerName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="10dp"
-                android:text="Исполнитель" />
-
-            <TextView
                 android:id="@+id/popularSong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
