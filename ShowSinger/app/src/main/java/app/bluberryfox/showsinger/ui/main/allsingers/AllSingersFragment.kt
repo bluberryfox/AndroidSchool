@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.Toast
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.data.Singer
@@ -21,7 +20,6 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
     private var allSingersPresenter = AllSingersPresenter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val progress = view?.findViewById<ProgressBar>(R.id.progressBar)
         return inflater.inflate(R.layout.singers_list, container, false)
     }
 

@@ -4,15 +4,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.view.View
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.data.SingerInfo
 import app.bluberryfox.showsinger.util.Constants
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.singer_info.*
 import org.jetbrains.anko.backgroundColor
 
 /**
@@ -66,6 +63,5 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
     }
 
     override fun showProgress() {
-        
     }
 }
