@@ -16,9 +16,9 @@ import org.jetbrains.anko.backgroundColor
  * Created by user on 08.03.2018.
  */
 class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
-    override fun hideProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+//    override fun hideProgress() {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
 
 
     override fun getId():Int {
@@ -28,8 +28,8 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         val song = findViewById<TextView>(R.id.popularSong)
         val desc  = findViewById<TextView>(R.id.description)
         val image = findViewById<ImageView>(R.id.imageView)
-        song.text =  singer.song
-        desc.text  = singer.description
+        desc.text =  singer.description
+        song.text = getString(R.string.recommend_song, singer.song)
         Glide.with(this).load(Constants.URL + intent.getStringExtra("image")).into(image)
     }
     private var singerInfoPresenter = SingerInfoPresenter()
@@ -62,6 +62,6 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         super.onDestroy()
     }
 
-    override fun showProgress() {
-    }
+//    override fun showProgress() {
+//    }
 }

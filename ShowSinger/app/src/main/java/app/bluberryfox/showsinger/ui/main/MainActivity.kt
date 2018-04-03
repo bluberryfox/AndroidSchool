@@ -24,10 +24,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        drawerLayout = findViewById(R.id.drawer_layout)
         drawerToggle = ActionBarDrawerToggle(
                 this,
                 drawerLayout,
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 R.string.drawer_open,
                 R.string.drawer_close)
         drawerLayout.addDrawerListener(drawerToggle)
-        nvDrawer = findViewById<NavigationView>(R.id.nvView)
+        nvDrawer = findViewById(R.id.nvView)
         setupDrawerContent(nvDrawer)
         if (savedInstanceState == null) selectDrawerItem(nvDrawer.menu!!.getItem(0))
 

@@ -22,7 +22,6 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.singers_list, container, false)
     }
-
     override fun onResume() {
         super.onResume()
         allSingersPresenter.attachView(this)

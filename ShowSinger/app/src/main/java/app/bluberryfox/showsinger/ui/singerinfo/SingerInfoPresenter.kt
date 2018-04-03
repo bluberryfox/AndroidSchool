@@ -22,10 +22,10 @@ class SingerInfoPresenter:SingerInfoContract.Presenter{
 
     override fun loadSingerInfo() {
             launch(UI) {
-                singerInfoView?.showProgress()
+//                singerInfoView?.showProgress()
                 val job = dataLoader.loadSingerInfoAsync(Constants.URL, singerInfoView?.getId()?.minus(1)!!)
                 singerInfoView?.showSingerInfo(job.await())
-                singerInfoView?.hideProgress()
+//                singerInfoView?.hideProgress()
             }
         }
     }
