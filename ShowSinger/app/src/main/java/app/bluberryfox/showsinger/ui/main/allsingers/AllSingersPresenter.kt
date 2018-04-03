@@ -17,7 +17,6 @@ class AllSingersPresenter:AllSingersContract.Presenter{
             singerView?.loadSingers(job.await())
         }
     }
-
     override fun detachView() {
         singerView = null
     }

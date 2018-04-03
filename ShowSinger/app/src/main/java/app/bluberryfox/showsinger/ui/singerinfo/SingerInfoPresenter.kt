@@ -22,7 +22,7 @@ class SingerInfoPresenter:SingerInfoContract.Presenter{
 
     override fun loadSingerInfo() {
             launch(UI) {
-                val job = dataLoader.loadSingerInfoAsync(Constants.URL)
+                val job = dataLoader.loadSingerInfoAsync(Constants.URL, singerInfoView?.getId()?.minus(1)!!)
                 singerInfoView?.showSingerInfo(job.await())
             }
         }

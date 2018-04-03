@@ -14,15 +14,15 @@ import org.jetbrains.anko.backgroundColor
  * Created by user on 08.03.2018.
  */
 class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
+    override fun getId():Int {
+        return intent.getIntExtra("id", 0)
+    }
     override fun showSingerInfo(singer: SingerInfo) {
         var song = findViewById<TextView>(R.id.popularSong)
         val desc  = findViewById<TextView>(R.id.description)
         song.text = singer.song
         desc.text  = singer.description
-
     }
-
-
     private var singerInfoPresenter = SingerInfoPresenter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +36,8 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
-
     }
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true

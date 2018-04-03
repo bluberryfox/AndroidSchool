@@ -11,6 +11,7 @@ interface SingerInfoContract{
     interface View:BaseView<Presenter>{
         fun showProgress()
         fun showSingerInfo(singer: SingerInfo)
+        fun getId():Int
 
     }
     interface Presenter:BasePresenter<View>{

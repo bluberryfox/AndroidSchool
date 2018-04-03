@@ -13,7 +13,6 @@ interface AllSingersContract{
         fun showSingerInfo(singer:Singer)
         fun showError()
         fun showProgress()
-
     }
     interface Presenter:BasePresenter<View>{
         fun loadSingers()

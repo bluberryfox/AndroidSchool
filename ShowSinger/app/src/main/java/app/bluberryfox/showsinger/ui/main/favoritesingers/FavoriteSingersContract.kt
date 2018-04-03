@@ -8,9 +8,7 @@ import app.bluberryfox.showsinger.BaseView
  */
 interface FavoriteSingersContract{
     interface View: BaseView<Presenter> {
-
     }
     interface Presenter:BasePresenter<View>{
-
     }
 }

@@ -28,14 +28,15 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         allSingersPresenter.attachView(this)
         recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
     }
+
     override fun onDestroy() {
         allSingersPresenter.detachView()
         super.onDestroy()
     }
 
-    override fun loadSingers(singers: Singer.List){
-        val adapter = SingerListAdapter(this.context!!, singers) {
-           showSingerInfo(it)
+    override fun loadSingers(singers: Singer.List) {
+        val adapter = SingerListAdapter(singers) {
+            showSingerInfo(it)
         }
         recyclerView.adapter = adapter
     }
@@ -47,10 +48,12 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         intent.putExtra("id", singer.id)
         startActivity(intent)
     }
-    override fun showProgress(){
+
+    override fun showProgress() {
 
     }
-    override fun showError(){
+
+    override fun showError() {
         Toast.makeText(context, "Нет подключения к интернету", Toast.LENGTH_SHORT).show()
     }
 }

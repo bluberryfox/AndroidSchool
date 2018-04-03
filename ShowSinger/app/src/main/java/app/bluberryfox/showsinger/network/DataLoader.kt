@@ -20,18 +20,18 @@ class DataLoader{
                 .build()
         val response = client.newCall(request).execute()
         val responseText = response.body()!!.string()
-        var singers = Gson().fromJson(responseText, Singer.List::class.java)
+        val singers = Gson().fromJson(responseText, Singer.List::class.java)
         singers
     }
-    fun loadSingerInfoAsync(url:String)=async(CommonPool){
+    fun loadSingerInfoAsync(url:String, id:Int)=async(CommonPool){
         val client = OkHttpClient()
         val request = Request.Builder()
                 //TODO: error handling
-                .url("$url?controller=singer&id=1")
+                .url("$url?controller=singer&id=$id")
                 .build()
         val response = client.newCall(request).execute()
         val responseText = response.body()!!.string()
-        var singers = Gson().fromJson(responseText, SingerInfo::class.java)
+        val singers = Gson().fromJson(responseText, SingerInfo::class.java)
         singers
     }
 }
