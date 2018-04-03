@@ -10,6 +10,7 @@ import app.bluberryfox.showsinger.data.SingerInfo
 interface SingerInfoContract{
     interface View:BaseView<Presenter>{
         fun showProgress()
+        fun hideProgress()
         fun showSingerInfo(singer: SingerInfo)
         fun getId():Int
 

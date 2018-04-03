@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.Toast
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.data.Singer
@@ -20,6 +21,7 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
     private var allSingersPresenter = AllSingersPresenter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val progress = view?.findViewById<ProgressBar>(R.id.progressBar)
         return inflater.inflate(R.layout.singers_list, container, false)
     }
 
@@ -39,7 +41,6 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
             showSingerInfo(it)
         }
         recyclerView.adapter = adapter
-        //???adapter.notifyDataSetChanged()
     }
 
     override fun showSingerInfo(singer: Singer) {
@@ -52,8 +53,12 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
     }
 
     override fun showProgress() {
-
+        progressBar.visibility = View.VISIBLE
     }
+    override fun hideProgress(){
+        progressBar.visibility = View.INVISIBLE
+    }
+
     override fun showError() {
         Toast.makeText(context, "Нет подключения к интернету", Toast.LENGTH_SHORT).show()
     }

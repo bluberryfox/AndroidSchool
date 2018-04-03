@@ -8,15 +8,19 @@ import kotlinx.coroutines.experimental.launch
 /**
  * Created by user on 27.03.2018.
  */
-class AllSingersPresenter:AllSingersContract.Presenter{
-    private var singerView:AllSingersContract.View? = null
-    private val dataLoader= DataLoader()
+class AllSingersPresenter : AllSingersContract.Presenter {
+    private var singerView: AllSingersContract.View? = null
+    private val dataLoader = DataLoader()
+
     override fun loadSingers() {
         launch(UI) {
+            singerView?.showProgress()
             val job = dataLoader.loadDataAsync(Constants.URL)
             singerView?.loadSingers(job.await())
+            singerView?.hideProgress()
         }
     }
+
     override fun detachView() {
         singerView = null
     }

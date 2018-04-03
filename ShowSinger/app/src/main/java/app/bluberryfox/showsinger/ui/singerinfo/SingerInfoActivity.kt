@@ -4,18 +4,26 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.data.SingerInfo
 import app.bluberryfox.showsinger.util.Constants
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.singer_info.*
 import org.jetbrains.anko.backgroundColor
 
 /**
  * Created by user on 08.03.2018.
  */
 class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
+    override fun hideProgress() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
     override fun getId():Int {
         return intent.getIntExtra("id", 0)
     }
@@ -58,6 +66,6 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
     }
 
     override fun showProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        
     }
 }
