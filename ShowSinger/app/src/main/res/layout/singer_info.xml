@@ -27,13 +27,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="10dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
                 android:text="Описание" />
 
             <TextView
                 android:id="@+id/popularSong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
                 android:layout_marginTop="10dp"
                 android:text="Самая популярная песня" />
 

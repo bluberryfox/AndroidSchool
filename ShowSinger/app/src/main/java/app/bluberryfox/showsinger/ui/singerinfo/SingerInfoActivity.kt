@@ -20,7 +20,6 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //    }
 
-
     override fun getId():Int {
         return intent.getIntExtra("id", 0)
     }
@@ -45,6 +44,7 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!
     }
 
     override fun onSupportNavigateUp(): Boolean {
