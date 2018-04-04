@@ -7,5 +7,5 @@ import app.bluberryfox.showsinger.data.Singer
 
 @Database(entities=[Singer::class], version = 1, exportSchema = false)
 abstract  class Database:RoomDatabase(){
-    abstract  fun getQueryDao(): SingerDao
+    abstract  fun singerDao(): SingerDao
 }

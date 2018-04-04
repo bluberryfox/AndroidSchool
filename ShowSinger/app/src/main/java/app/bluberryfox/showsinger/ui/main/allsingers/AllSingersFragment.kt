@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.singers_list.*
 
 
 class AllSingersFragment : Fragment(), AllSingersContract.View {
-    private var allSingersPresenter = AllSingersPresenter()
+    private var allSingersPresenter = AllSingersPresenter(this.context!!)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.singers_list, container, false)

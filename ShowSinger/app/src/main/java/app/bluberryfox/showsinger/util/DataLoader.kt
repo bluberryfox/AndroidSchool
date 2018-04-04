@@ -1,12 +1,15 @@
 package app.bluberryfox.showsinger.util
 
+import app.bluberryfox.showsinger.App
 import app.bluberryfox.showsinger.data.Singer
 import app.bluberryfox.showsinger.data.SingerInfo
 import com.google.gson.Gson
 import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.async
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import kotlin.coroutines.experimental.CoroutineContext
 
 /**
  * Created by user on 26.03.2018.
@@ -34,5 +37,11 @@ class DataLoader{
         val responseText = response.body()!!.string()
         val singers = Gson().fromJson(responseText, SingerInfo::class.java)
         singers
+    }
+    fun loadingSingersFromCache(
+            app: App,
+            coroutineContext: CoroutineContext = CommonPool
+    ): Deferred<List<Singer>> = async(coroutineContext) {
+        app.database.singerDao().getAllSingers()
     }
 }
