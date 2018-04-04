@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide
  * Created by user on 08.03.2018.
  */
 class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
-
+    var singerInfoPresenter:SingerInfoPresenter? = null
     override fun getId():Int {
         return intent.getIntExtra("id", 0)
     }
@@ -28,7 +28,7 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         song.text = getString(R.string.recommend_song, singer.song)
         Glide.with(this).load(Constants.URL + intent.getStringExtra("image")).into(image)
     }
-    private var singerInfoPresenter = SingerInfoPresenter(applicationContext, application as App, getId() )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.singer_info)
@@ -39,6 +39,7 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
+        singerInfoPresenter = SingerInfoPresenter(this.application as App, getId())
 
     }
 
@@ -49,11 +50,11 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
 
     override fun onResume() {
         super.onResume()
-        singerInfoPresenter.attachView(this)
+        singerInfoPresenter?.attachView(this)
     }
 
     override fun onDestroy() {
-        singerInfoPresenter.detachView()
+        singerInfoPresenter?.detachView()
         super.onDestroy()
     }
 
