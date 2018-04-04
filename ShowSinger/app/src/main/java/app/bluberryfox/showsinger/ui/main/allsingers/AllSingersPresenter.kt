@@ -17,7 +17,6 @@ class AllSingersPresenter(var context: Context) : AllSingersContract.Presenter {
 
     override fun loadSingers() {
         launch(UI) {
-            singerView?.showProgress()
             if (networkManager.isConnectedToInternet == true) {
                 val job = dataLoader.loadDataAsync(Constants.URL)
                 singerView?.loadSingers(job.await())

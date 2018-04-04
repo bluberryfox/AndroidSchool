@@ -15,9 +15,6 @@ import com.bumptech.glide.Glide
  * Created by user on 08.03.2018.
  */
 class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
-//    override fun hideProgress() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
 
     override fun getId():Int {
         return intent.getIntExtra("id", 0)
@@ -59,6 +56,4 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         super.onDestroy()
     }
 
-//    override fun showProgress() {
-//    }
 }

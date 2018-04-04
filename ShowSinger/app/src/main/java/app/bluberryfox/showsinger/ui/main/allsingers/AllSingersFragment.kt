@@ -17,18 +17,19 @@ import kotlinx.android.synthetic.main.singers_list.*
 
 
 class AllSingersFragment : Fragment(), AllSingersContract.View {
-    private var allSingersPresenter = AllSingersPresenter(this.context!!)
+    var allSingersPresenter:AllSingersPresenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        allSingersPresenter = AllSingersPresenter(this.context!!)
         return inflater.inflate(R.layout.singers_list, container, false)
     }
     override fun onResume() {
         super.onResume()
-        allSingersPresenter.attachView(this)
+        allSingersPresenter?.attachView(this)
         recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
     }
     override fun onDestroy() {
-        allSingersPresenter.detachView()
+        allSingersPresenter?.detachView()
         super.onDestroy()
     }
 
