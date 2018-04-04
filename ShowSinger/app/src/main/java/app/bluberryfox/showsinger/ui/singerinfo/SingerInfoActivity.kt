@@ -10,7 +10,6 @@ import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.data.SingerInfo
 import app.bluberryfox.showsinger.util.Constants
 import com.bumptech.glide.Glide
-import org.jetbrains.anko.backgroundColor
 
 /**
  * Created by user on 08.03.2018.
@@ -36,15 +35,13 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.singer_info)
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
-        toolbar.backgroundColor = Color.TRANSPARENT
-        var img = findViewById<ImageView>(R.id.imageView)
-        img.setImageResource(R.drawable.fox)
+        toolbar.setBackgroundColor(Color.TRANSPARENT)
         val singer = intent.getStringExtra("singer_name")
         toolbar.title = singer
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

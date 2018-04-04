@@ -27,7 +27,6 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         allSingersPresenter.attachView(this)
         recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
     }
-
     override fun onDestroy() {
         allSingersPresenter.detachView()
         super.onDestroy()

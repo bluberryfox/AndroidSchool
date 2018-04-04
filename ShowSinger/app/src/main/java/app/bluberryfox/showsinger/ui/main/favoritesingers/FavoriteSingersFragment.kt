@@ -18,13 +18,11 @@ class FavoriteSingersFragment : Fragment(), FavoriteSingersContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.singers_heard_list, container, false)
-
     }
 
     override fun onResume() {
         super.onResume()
         favoriteSingersPresenter.attachView(this)
-
     }
 
     override fun onDestroy() {
