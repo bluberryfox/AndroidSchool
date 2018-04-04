@@ -11,5 +11,5 @@ interface SingerDao {
     fun getAll():List<Singer>
 
     @Insert
-    fun unsertAll(singers:List<Singer>)
+    fun insertAll(singers:List<Singer>)
 }

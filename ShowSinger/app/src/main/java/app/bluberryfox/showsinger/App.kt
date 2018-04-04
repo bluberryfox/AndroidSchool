@@ -11,7 +11,9 @@ class App: Application(){
     lateinit var database: ShowSingerDatabase
     override fun onCreate() {
         super.onCreate()
-        database = Room.databaseBuilder(this, ShowSingerDatabase::class.java, "singers").build()
+        database = Room.databaseBuilder(this, ShowSingerDatabase::class.java, "singers")
+                .fallbackToDestructiveMigration()
+                .build()
     }
 
 }

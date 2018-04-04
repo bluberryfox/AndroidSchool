@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.ImageView
 import android.widget.TextView
+import app.bluberryfox.showsinger.App
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.data.SingerInfo
 import app.bluberryfox.showsinger.util.Constants
@@ -27,7 +28,7 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         song.text = getString(R.string.recommend_song, singer.song)
         Glide.with(this).load(Constants.URL + intent.getStringExtra("image")).into(image)
     }
-    private var singerInfoPresenter = SingerInfoPresenter()
+    private var singerInfoPresenter = SingerInfoPresenter(applicationContext, application as App, getId() )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.singer_info)

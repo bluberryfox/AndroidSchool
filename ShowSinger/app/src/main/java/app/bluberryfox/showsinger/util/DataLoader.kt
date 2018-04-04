@@ -44,4 +44,12 @@ class DataLoader{
     ): Deferred<List<Singer>> = async(coroutineContext) {
         app.database.singersDao().getAll()
     }
+
+    fun loadingSingersInfoFromCache(
+            app:App,
+            position:Int,
+            coroutineContext: CoroutineContext = CommonPool
+    ): Deferred<SingerInfo?> = async(coroutineContext) {
+        app.database.singerInfoDao().getSingerInfo(position)
+    }
 }

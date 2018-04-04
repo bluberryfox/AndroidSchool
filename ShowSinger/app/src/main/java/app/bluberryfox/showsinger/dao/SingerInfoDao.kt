@@ -1,12 +1,18 @@
 package app.bluberryfox.showsinger.dao
 
-import android.arch.persistence.room.Insert
+import android.arch.persistence.room.Dao
+import android.arch.persistence.room.Delete
 import android.arch.persistence.room.Query
-import app.bluberryfox.showsinger.data.Singer
+import app.bluberryfox.showsinger.data.SingerInfo
 
-interface SingerInfoDao {
-    @Query("SELECT * FROM SingerInfo")
-    fun getAll():List<Singer>
+@Dao
+interface SingerInfoDao{
+    @Query("SELECT * FROM SingerInfo WHERE id =:id")
+    fun getSingerInfo(id:Int): SingerInfo?
 
-    @Insert
-    fun unsertAll(singers:List<Singer>)
+    @Delete
+    fun insertSingerInfo(singerInfo:SingerInfo)
+
+
+
+}
