@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import app.bluberryfox.showsinger.App
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.data.Singer
 import app.bluberryfox.showsinger.ui.adapters.SingerListAdapter
@@ -20,7 +21,7 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
     var allSingersPresenter:AllSingersPresenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        allSingersPresenter = AllSingersPresenter(this.context!!)
+        allSingersPresenter = AllSingersPresenter(this.context!!, activity?.application as App)
         return inflater.inflate(R.layout.singers_list, container, false)
     }
     override fun onResume() {

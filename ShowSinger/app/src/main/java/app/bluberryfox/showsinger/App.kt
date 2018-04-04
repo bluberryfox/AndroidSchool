@@ -8,11 +8,10 @@ import android.arch.persistence.room.Room
  */
 class App: Application(){
 
-    lateinit var database: Database
-
+    lateinit var database: ShowSingerDatabase
     override fun onCreate() {
         super.onCreate()
-        database = Room.databaseBuilder(this, Database::class.java, "singer_db").build()
+        database = Room.databaseBuilder(this, ShowSingerDatabase::class.java, "singers").build()
     }
 
 }

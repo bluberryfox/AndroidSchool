@@ -42,6 +42,6 @@ class DataLoader{
             app: App,
             coroutineContext: CoroutineContext = CommonPool
     ): Deferred<List<Singer>> = async(coroutineContext) {
-        app.database.singerDao().getAllSingers()
+        app.database.singersDao().getAll()
     }
 }
