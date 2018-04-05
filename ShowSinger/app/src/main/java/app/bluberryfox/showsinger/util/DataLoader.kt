@@ -44,6 +44,12 @@ import kotlin.coroutines.experimental.CoroutineContext
     ): Deferred<List<Singer>> = async(coroutineContext) {
         app.database.singersDao().getAll()
     }
+    fun selectSpecial(app:App,
+                  id:Int,
+                  coroutineContext: CoroutineContext = CommonPool):
+            Deferred<List<Singer>> = async(coroutineContext){
+    app.database.singersDao().selectSpecial(id)
+    }
 
     fun loadingSingersInfoFromCache(
             app:App,
@@ -52,3 +58,5 @@ import kotlin.coroutines.experimental.CoroutineContext
     ): Deferred<SingerInfo?> = async(coroutineContext) {
         app.database.singerInfoDao().getSingerInfo(position)
     }
+
+

@@ -29,7 +29,7 @@ class AllSingersPresenter(var context: Context, var activity:App) : AllSingersCo
                 singers.addAll(cloudSingers)
 
             }
-            singerView?.loadSingers(singers)
+            singerView?.showSingers(singers)
 
             }
         }

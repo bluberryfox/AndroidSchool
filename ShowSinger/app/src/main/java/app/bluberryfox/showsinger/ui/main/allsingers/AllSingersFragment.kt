@@ -36,7 +36,7 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         super.onDestroy()
     }
 
-    override fun loadSingers(singers: Singer.List) {
+    override fun showSingers(singers: Singer.List) {
         val adapter = SingerListAdapter(singers) {
             showSingerInfo(it)
         }
@@ -50,13 +50,6 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         intent.putExtra("id", singer.id)
         intent.putExtra("image", singer.image)
         startActivity(intent)
-    }
-
-    override fun showProgress() {
-        progressBar.visibility = View.VISIBLE
-    }
-    override fun hideProgress(){
-        progressBar.visibility = View.INVISIBLE
     }
 
     override fun showError() {

@@ -7,7 +7,7 @@ import app.bluberryfox.showsinger.dao.SingerInfoDao
 import app.bluberryfox.showsinger.data.Singer
 import app.bluberryfox.showsinger.data.SingerInfo
 
-@Database(entities = [Singer::class, SingerInfo::class], version = 3)
+@Database(entities = [Singer::class, SingerInfo::class], version = 4)
 abstract class ShowSingerDatabase : RoomDatabase() {
     abstract fun singersDao(): SingerDao
     abstract fun singerInfoDao(): SingerInfoDao

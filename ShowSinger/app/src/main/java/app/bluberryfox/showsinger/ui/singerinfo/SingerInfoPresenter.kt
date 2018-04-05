@@ -12,6 +12,10 @@ import kotlinx.coroutines.experimental.launch
  * Created by user on 27.03.2018.
  */
 class SingerInfoPresenter(var activity: App, private var position: Int) : SingerInfoContract.Presenter {
+    override fun saveToFavorite(id: Int) {
+        saveToFavorite(id)
+    }
+
     private var singerInfoView: SingerInfoContract.View? = null
 
     override fun attachView(view: SingerInfoContract.View) {
@@ -24,7 +28,6 @@ class SingerInfoPresenter(var activity: App, private var position: Int) : Singer
     }
 
     override fun loadSingerInfo() {
-
         launch(UI) {
             val cachedSingerInfo = loadingSingersInfoFromCache(activity, position.toLong()).await()
             if (cachedSingerInfo!=null) {

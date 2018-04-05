@@ -15,6 +15,7 @@ interface SingerInfoContract{
     }
     interface Presenter:BasePresenter<View>{
         fun loadSingerInfo()
+        fun saveToFavorite(id:Int)
 
     }
 }

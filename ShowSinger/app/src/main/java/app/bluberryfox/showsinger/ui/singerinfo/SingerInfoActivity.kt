@@ -19,16 +19,17 @@ import com.bumptech.glide.Glide
 /**
  * Created by user on 08.03.2018.
  */
-class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
-    var singerInfoPresenter:SingerInfoPresenter? = null
-    override fun getId():Int {
+class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
+    var singerInfoPresenter: SingerInfoPresenter? = null
+    override fun getId(): Int {
         return intent.getIntExtra("id", 0)
     }
+
     override fun showSingerInfo(singer: SingerInfo) {
         val song = findViewById<TextView>(R.id.popularSong)
-        val desc  = findViewById<TextView>(R.id.description)
+        val desc = findViewById<TextView>(R.id.description)
         val image = findViewById<ImageView>(R.id.imageView)
-        desc.text =  singer.description
+        desc.text = singer.description
         song.text = getString(R.string.recommend_song, singer.song)
         Glide.with(this).load(Constants.URL + intent.getStringExtra("image")).into(image)
     }
@@ -48,7 +49,7 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater:MenuInflater = menuInflater
+        val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.toolbar_main_menu, menu)
         return true
     }
@@ -56,9 +57,9 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.ADD -> {
+                singerInfoPresenter?.saveToFavorite(getId())
                 Toast.makeText(this, "Добавлено", Toast.LENGTH_SHORT).show()
                 return true
-
             }
         }
         return true;

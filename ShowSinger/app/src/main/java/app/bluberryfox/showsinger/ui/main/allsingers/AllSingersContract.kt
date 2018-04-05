@@ -9,11 +9,9 @@ import app.bluberryfox.showsinger.data.Singer
  */
 interface AllSingersContract{
     interface View: BaseView<Presenter> {
-        fun loadSingers(singers: Singer.List)
+        fun showSingers(singers: Singer.List)
         fun showSingerInfo(singer:Singer)
         fun showError()
-        fun showProgress()
-        fun hideProgress()
     }
     interface Presenter:BasePresenter<View>{
         fun loadSingers()
