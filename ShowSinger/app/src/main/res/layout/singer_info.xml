@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -26,21 +26,18 @@
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:text="Описание" />
+                android:gravity="left" />
 
             <TextView
                 android:id="@+id/popularSong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:layout_marginTop="10dp" />
-
-
         </LinearLayout>
         <include
             layout="@layout/toolbar"
