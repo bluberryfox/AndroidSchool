@@ -38,6 +38,6 @@ class FavoriteSingersFragment : Fragment(), FavoriteSingersContract.View {
 ////        recyclerView.adapter = adapter
 //        //recyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayout.VERTICAL, false)
 ////
-
- //   }
+//
+//    }
 }

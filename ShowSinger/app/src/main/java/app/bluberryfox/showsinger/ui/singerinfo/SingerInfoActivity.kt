@@ -4,8 +4,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import app.bluberryfox.showsinger.App
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.data.SingerInfo
@@ -41,6 +45,23 @@ class SingerInfoActivity: AppCompatActivity(), SingerInfoContract.View{
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         singerInfoPresenter = SingerInfoPresenter(this.application as App, getId())
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater:MenuInflater = menuInflater
+        inflater.inflate(R.menu.toolbar_main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.ADD -> {
+                Toast.makeText(this, "Добавлено", Toast.LENGTH_SHORT).show()
+                return true
+
+            }
+        }
+        return true;
     }
 
     override fun onSupportNavigateUp(): Boolean {

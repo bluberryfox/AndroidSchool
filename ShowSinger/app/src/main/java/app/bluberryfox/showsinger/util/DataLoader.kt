@@ -14,7 +14,7 @@ import kotlin.coroutines.experimental.CoroutineContext
 /**
  * Created by user on 26.03.2018.
  */
-class DataLoader{
+
     //TODO:когда знаешь про полиморфизм, но не используешь -__-
     fun loadDataAsync(url:String)=async(CommonPool){
         val client = OkHttpClient()
@@ -52,4 +52,3 @@ class DataLoader{
     ): Deferred<SingerInfo?> = async(coroutineContext) {
         app.database.singerInfoDao().getSingerInfo(position)
     }
-}

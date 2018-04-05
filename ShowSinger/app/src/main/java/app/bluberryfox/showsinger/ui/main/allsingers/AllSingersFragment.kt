@@ -24,11 +24,13 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         allSingersPresenter = AllSingersPresenter(this.context!!, activity?.application as App)
         return inflater.inflate(R.layout.singers_list, container, false)
     }
+
     override fun onResume() {
         super.onResume()
         allSingersPresenter?.attachView(this)
         recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
     }
+
     override fun onDestroy() {
         allSingersPresenter?.detachView()
         super.onDestroy()
