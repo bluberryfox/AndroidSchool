@@ -1,6 +1,7 @@
 package app.bluberryfox.showsinger.ui.main.favoritesingers
 
 import android.content.Context
+import android.util.Log
 import app.bluberryfox.showsinger.App
 import app.bluberryfox.showsinger.data.Singer
 import app.bluberryfox.showsinger.util.selectSpecial
@@ -16,7 +17,8 @@ class FavoriteSingersPresenter(var context: Context, var activity: App) : Favori
         val favoriteSingers = Singer.List()
         launch(UI) {
             val savedSingers = selectSpecial(activity, 1).await()
-            if(favoriteSingers.isNotEmpty()){
+            Log.d("INFO", savedSingers.toString())
+            if(savedSingers.isNotEmpty()){
                 favoriteSingers.addAll(savedSingers)
             }
             singerView?.showFavoriteSingers(favoriteSingers)

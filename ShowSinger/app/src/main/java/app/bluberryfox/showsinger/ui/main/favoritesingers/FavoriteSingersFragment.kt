@@ -3,9 +3,11 @@ package app.bluberryfox.showsinger.ui.main.favoritesingers
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import app.bluberryfox.showsinger.App
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.data.Singer
@@ -19,6 +21,7 @@ import kotlinx.android.synthetic.main.singers_list.*
  */
 //activty use database connection
 class FavoriteSingersFragment : Fragment(), FavoriteSingersContract.View {
+    private var favoriteSingersPresenter: FavoriteSingersPresenter? = null
     override fun showSingerInfo(singer: Singer) {
         val intent = Intent(view!!.context, SingerInfoActivity::class.java)
         intent.putExtra("singer_name", singer.name)
@@ -27,8 +30,6 @@ class FavoriteSingersFragment : Fragment(), FavoriteSingersContract.View {
         intent.putExtra("image", singer.image)
         startActivity(intent)
     }
-
-    private var favoriteSingersPresenter: FavoriteSingersPresenter? = null
     override fun showFavoriteSingers(singers: Singer.List) {
         val adapter = SingerListAdapter(singers) {
             showSingerInfo(it)
@@ -44,6 +45,7 @@ class FavoriteSingersFragment : Fragment(), FavoriteSingersContract.View {
     override fun onResume() {
         super.onResume()
         favoriteSingersPresenter?.attachView(this)
+        recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
     }
 
     override fun onDestroy() {
