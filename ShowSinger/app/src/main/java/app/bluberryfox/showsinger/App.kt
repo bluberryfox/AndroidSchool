@@ -13,6 +13,7 @@ class App: Application(){
         super.onCreate()
         database = Room.databaseBuilder(this, ShowSingerDatabase::class.java, "singers")
                 .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
                 .build()
     }
 
