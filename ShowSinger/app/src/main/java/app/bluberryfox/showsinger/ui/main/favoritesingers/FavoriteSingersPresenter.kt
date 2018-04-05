@@ -26,6 +26,7 @@ class FavoriteSingersPresenter(var context: Context, var activity: App) : Favori
 
     override fun attachView(view: FavoriteSingersContract.View) {
         singerView = view
+        loadFavoriteSingers()
     }
 
     override fun detachView() {

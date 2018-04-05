@@ -15,10 +15,10 @@ interface SingerDao {
     fun insertAll(singers:List<Singer>)
 
     @Query("UPDATE Singer SET isFavorite = 1 WHERE id=:id")
-    fun addToFavorite(id:Int)
+    fun addToFavorite(id:Long)
 
     @Query("SELECT * FROM Singer WHERE isFavorite = :isFavorite")
-    fun selectSpecial(isFavorite:Int):List<Singer>
+    fun selectSpecial(isFavorite:Long):List<Singer>
 
 
 

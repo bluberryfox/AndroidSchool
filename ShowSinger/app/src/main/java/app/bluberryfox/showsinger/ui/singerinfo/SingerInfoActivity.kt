@@ -21,18 +21,7 @@ import com.bumptech.glide.Glide
  */
 class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
     var singerInfoPresenter: SingerInfoPresenter? = null
-    override fun getId(): Int {
-        return intent.getIntExtra("id", 0)
-    }
 
-    override fun showSingerInfo(singer: SingerInfo) {
-        val song = findViewById<TextView>(R.id.popularSong)
-        val desc = findViewById<TextView>(R.id.description)
-        val image = findViewById<ImageView>(R.id.imageView)
-        desc.text = singer.description
-        song.text = getString(R.string.recommend_song, singer.song)
-        Glide.with(this).load(Constants.URL + intent.getStringExtra("image")).into(image)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +53,14 @@ class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
         }
         return true;
     }
+    override fun showSingerInfo(singer: SingerInfo) {
+        val song = findViewById<TextView>(R.id.popularSong)
+        val desc = findViewById<TextView>(R.id.description)
+        val image = findViewById<ImageView>(R.id.imageView)
+        desc.text = singer.description
+        song.text = getString(R.string.recommend_song, singer.song)
+        Glide.with(this).load(Constants.URL + intent.getStringExtra("image")).into(image)
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -79,5 +76,9 @@ class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
         singerInfoPresenter?.detachView()
         super.onDestroy()
     }
+    override fun getId(): Int {
+        return intent.getIntExtra("id", 0)
+    }
+
 
 }

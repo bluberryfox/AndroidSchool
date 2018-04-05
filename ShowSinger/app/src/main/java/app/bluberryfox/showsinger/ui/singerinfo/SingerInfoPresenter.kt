@@ -1,10 +1,7 @@
 package app.bluberryfox.showsinger.ui.singerinfo
 
 import app.bluberryfox.showsinger.App
-import app.bluberryfox.showsinger.util.Constants
-import app.bluberryfox.showsinger.util.loadSingerInfoAsync
-import app.bluberryfox.showsinger.util.loadingSingersInfoFromCache
-import app.bluberryfox.showsinger.util.saveSingerInfo
+import app.bluberryfox.showsinger.util.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 
@@ -13,7 +10,10 @@ import kotlinx.coroutines.experimental.launch
  */
 class SingerInfoPresenter(var activity: App, private var position: Int) : SingerInfoContract.Presenter {
     override fun saveToFavorite(id: Int) {
-        saveToFavorite(id)
+        launch(UI) {
+            saveSingerToFavorite(activity, id.toLong())
+        }
+
     }
 
     private var singerInfoView: SingerInfoContract.View? = null

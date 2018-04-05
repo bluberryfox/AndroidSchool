@@ -22,8 +22,8 @@ fun saveSingerInfo(
 ):Deferred<Unit> = async(coroutineContext){
     app.database.singerInfoDao().insertSingerInfo(singerInfo)
 }
-fun saveToFavorite(app:App,
-                   id:Int,
+fun saveSingerToFavorite(app:App,
+                   id:Long,
                    coroutineContext: CoroutineContext = CommonPool):Deferred<Unit> = async(coroutineContext){
     app.database.singersDao().addToFavorite(id)
 }
