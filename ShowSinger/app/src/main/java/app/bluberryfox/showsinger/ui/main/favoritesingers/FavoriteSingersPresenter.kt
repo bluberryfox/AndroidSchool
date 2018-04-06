@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import app.bluberryfox.showsinger.App
 import app.bluberryfox.showsinger.data.Singer
+import app.bluberryfox.showsinger.util.NetworkManager
 import app.bluberryfox.showsinger.util.selectSpecial
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
@@ -13,6 +14,7 @@ import kotlinx.coroutines.experimental.launch
  */
 class FavoriteSingersPresenter(var context: Context, var activity: App) : FavoriteSingersContract.Presenter {
     private var singerView: FavoriteSingersContract.View? = null
+
     override fun loadFavoriteSingers() {
         val favoriteSingers = Singer.List()
         launch(UI) {

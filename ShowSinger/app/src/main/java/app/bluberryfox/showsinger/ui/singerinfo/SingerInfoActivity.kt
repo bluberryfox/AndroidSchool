@@ -31,7 +31,7 @@ class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
-        singerInfoPresenter = SingerInfoPresenter(this.application as App, getId())
+        singerInfoPresenter = SingerInfoPresenter(this, this.application as App, getId())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
