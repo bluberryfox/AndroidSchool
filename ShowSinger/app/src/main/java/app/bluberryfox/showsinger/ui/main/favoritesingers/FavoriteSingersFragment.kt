@@ -39,7 +39,7 @@ class FavoriteSingersFragment : Fragment(), FavoriteSingersContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         favoriteSingersPresenter = FavoriteSingersPresenter(this.context!!, activity?.application as App)
-        return inflater.inflate(R.layout.singers_heard_list, container, false)
+        return inflater.inflate(R.layout.singers_list, container, false)
     }
 
     override fun onResume() {
