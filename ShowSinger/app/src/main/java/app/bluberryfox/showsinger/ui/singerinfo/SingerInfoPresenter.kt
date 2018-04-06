@@ -37,7 +37,7 @@ class SingerInfoPresenter(var context: Context, var activity: App, private var p
                     singerInfoView?.showSingerInfo(cachedSingerInfo)
                 }
             } else {
-                val cloudSingersJob = loadSingerInfoAsync(Constants.URL, position - 1)
+                val cloudSingersJob = loadSingerInfo(Constants.URL, position - 1)
                 cloudSingersJob.start()
                 val cloudSinger = cloudSingersJob.await()
                 saveSingerInfo(activity, cloudSinger)

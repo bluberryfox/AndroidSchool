@@ -24,7 +24,7 @@ class AllSingersPresenter(var context: Context, var activity: App) : AllSingersC
 
                 }
             } else {
-                val cloudSingersJob = loadDataAsync(Constants.URL)
+                val cloudSingersJob = loadSingers(Constants.URL)
                 cloudSingersJob.start()
                 val cloudSingers = cloudSingersJob.await()
                 saveSingers(activity, cloudSingers)
