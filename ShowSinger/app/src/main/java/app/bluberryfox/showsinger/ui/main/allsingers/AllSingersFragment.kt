@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Toast
 import app.bluberryfox.showsinger.App
 import app.bluberryfox.showsinger.R
 import app.bluberryfox.showsinger.data.Singer
@@ -19,6 +18,7 @@ import kotlinx.android.synthetic.main.singers_list.*
 
 
 class AllSingersFragment : Fragment(), AllSingersContract.View {
+
     var allSingersPresenter: AllSingersPresenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -26,7 +26,10 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         val rootView = inflater.inflate(R.layout.singers_list, container, false)
         rootView.findViewById<SwipeRefreshLayout>(R.id.swipe).apply {
             setColorSchemeResources(R.color.colorPrimaryDark, R.color.colorPrimary, R.color.colorAccent)
-            setOnRefreshListener { allSingersPresenter?.loadSingers() }
+            setOnRefreshListener({
+                isRefreshing = false
+                allSingersPresenter?.loadSingers()
+            })
         }
         return rootView
     }
@@ -36,6 +39,7 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         allSingersPresenter?.attachView(this)
         recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
     }
+
 
     override fun onDestroy() {
         allSingersPresenter?.detachView()
@@ -58,9 +62,6 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         startActivity(intent)
     }
 
-    override fun showError() {
-        Toast.makeText(context, "Нет подключения к интернету", Toast.LENGTH_SHORT).show()
-    }
 }
 
 

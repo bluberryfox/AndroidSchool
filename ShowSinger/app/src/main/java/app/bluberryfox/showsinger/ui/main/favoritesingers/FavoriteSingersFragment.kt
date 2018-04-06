@@ -3,6 +3,7 @@ package app.bluberryfox.showsinger.ui.main.favoritesingers
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +40,15 @@ class FavoriteSingersFragment : Fragment(), FavoriteSingersContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         favoriteSingersPresenter = FavoriteSingersPresenter(this.context!!, activity?.application as App)
-        return inflater.inflate(R.layout.singers_list, container, false)
+        val rootView = inflater.inflate(R.layout.singers_list, container, false)
+        rootView.findViewById<SwipeRefreshLayout>(R.id.swipe).apply {
+            setColorSchemeResources(R.color.colorPrimaryDark, R.color.colorPrimary, R.color.colorAccent)
+            setOnRefreshListener({
+                isRefreshing = false
+                favoriteSingersPresenter?.loadFavoriteSingers()
+            })
+        }
+        return rootView
     }
 
     override fun onResume() {

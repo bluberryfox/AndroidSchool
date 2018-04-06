@@ -11,7 +11,6 @@ interface AllSingersContract{
     interface View: BaseView<Presenter> {
         fun showSingers(singers: Singer.List)
         fun showSingerInfo(singer:Singer)
-        fun showError()
     }
     interface Presenter:BasePresenter<View>{
         fun loadSingers()
