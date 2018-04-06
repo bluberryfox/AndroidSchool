@@ -16,7 +16,6 @@ class SingerInfoPresenter(var context: Context, var activity: App, private var p
         launch(UI) {
             saveSingerToFavorite(activity, id.toLong())
         }
-
     }
 
     private var singerInfoView: SingerInfoContract.View? = null
@@ -37,17 +36,13 @@ class SingerInfoPresenter(var context: Context, var activity: App, private var p
                 if (cachedSingerInfo != null) {
                     singerInfoView?.showSingerInfo(cachedSingerInfo)
                 }
-            }else {
-                val cloudSingersJob = loadSingerInfoAsync(Constants.URL, position-1)
+            } else {
+                val cloudSingersJob = loadSingerInfoAsync(Constants.URL, position - 1)
                 cloudSingersJob.start()
                 val cloudSinger = cloudSingersJob.await()
                 saveSingerInfo(activity, cloudSinger)
                 singerInfoView?.showSingerInfo(cloudSinger)
-
-
             }
-
-
         }
     }
 }

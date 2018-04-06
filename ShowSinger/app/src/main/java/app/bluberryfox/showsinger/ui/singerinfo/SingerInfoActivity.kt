@@ -47,13 +47,14 @@ class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
                 Toast.makeText(this, "Добавлено", Toast.LENGTH_SHORT).show()
                 return true
             }
-            android.R.id.home->{
+            android.R.id.home -> {
                 onBackPressed()
                 return true
             }
         }
         return true
     }
+
     override fun showSingerInfo(singer: SingerInfo) {
         val song = findViewById<TextView>(R.id.popularSong)
         val desc = findViewById<TextView>(R.id.description)
@@ -72,6 +73,7 @@ class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
         singerInfoPresenter?.detachView()
         super.onDestroy()
     }
+
     override fun getId(): Int {
         return intent.getIntExtra("id", 0)
     }

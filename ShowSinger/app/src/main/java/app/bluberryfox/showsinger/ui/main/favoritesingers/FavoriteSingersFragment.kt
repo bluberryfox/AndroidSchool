@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.singers_list.*
 /**
  * Created by user on 08.03.2018.
  */
-//activty use database connection
 class FavoriteSingersFragment : Fragment(), FavoriteSingersContract.View {
     private var favoriteSingersPresenter: FavoriteSingersPresenter? = null
     override fun showSingerInfo(singer: Singer) {
@@ -31,6 +30,7 @@ class FavoriteSingersFragment : Fragment(), FavoriteSingersContract.View {
         intent.putExtra("image", singer.image)
         startActivity(intent)
     }
+
     override fun showFavoriteSingers(singers: Singer.List) {
         val adapter = SingerListAdapter(singers) {
             showSingerInfo(it)

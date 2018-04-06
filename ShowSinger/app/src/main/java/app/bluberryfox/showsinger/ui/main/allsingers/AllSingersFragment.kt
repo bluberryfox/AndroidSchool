@@ -40,7 +40,6 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayout.VERTICAL, false)
     }
 
-
     override fun onDestroy() {
         allSingersPresenter?.detachView()
         super.onDestroy()
@@ -61,7 +60,6 @@ class AllSingersFragment : Fragment(), AllSingersContract.View {
         intent.putExtra("image", singer.image)
         startActivity(intent)
     }
-
 }
 
 
