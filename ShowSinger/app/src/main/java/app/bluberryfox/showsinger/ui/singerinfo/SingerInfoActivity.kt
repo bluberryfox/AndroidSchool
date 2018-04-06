@@ -21,12 +21,10 @@ import com.bumptech.glide.Glide
  */
 class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
     var singerInfoPresenter: SingerInfoPresenter? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.singer_info)
-        var toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.setBackgroundColor(Color.TRANSPARENT)
         val singer = intent.getStringExtra("singer_name")
         toolbar.title = singer
@@ -34,7 +32,6 @@ class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         singerInfoPresenter = SingerInfoPresenter(this.application as App, getId())
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -50,8 +47,12 @@ class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
                 Toast.makeText(this, "Добавлено", Toast.LENGTH_SHORT).show()
                 return true
             }
+            android.R.id.home->{
+                onBackPressed()
+                return true
+            }
         }
-        return true;
+        return true
     }
     override fun showSingerInfo(singer: SingerInfo) {
         val song = findViewById<TextView>(R.id.popularSong)
@@ -60,11 +61,6 @@ class SingerInfoActivity : AppCompatActivity(), SingerInfoContract.View {
         desc.text = singer.description
         song.text = getString(R.string.recommend_song, singer.song)
         Glide.with(this).load(Constants.URL + intent.getStringExtra("image")).into(image)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 
     override fun onResume() {
