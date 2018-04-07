@@ -9,7 +9,6 @@ import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.async
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import kotlin.coroutines.experimental.CoroutineContext
 
 /**
  * Created by user on 26.03.2018.
@@ -38,25 +37,15 @@ fun loadSingerInfo(url: String, id: Int) = async(CommonPool) {
     singers
 }
 
-fun loadingSingersFromCache(
-        app: App,
-        coroutineContext: CoroutineContext = CommonPool
-): Deferred<List<Singer>> = async(coroutineContext) {
+fun loadingSingersFromCache(app: App): Deferred<List<Singer>> = async(CommonPool) {
     app.database.singersDao().getAll()
 }
 
-fun selectSpecial(app: App,
-                  id: Int,
-                  coroutineContext: CoroutineContext = CommonPool):
-        Deferred<List<Singer>> = async(coroutineContext) {
-    app.database.singersDao().selectSpecial(id.toLong())
+fun selectSpecial(app: App,id: Long): Deferred<List<Singer>> = async(CommonPool) {
+    app.database.singersDao().selectSpecial(id)
 }
 
-fun loadingSingersInfoFromCache(
-        app: App,
-        position: Long,
-        coroutineContext: CoroutineContext = CommonPool
-): Deferred<SingerInfo?> = async(coroutineContext) {
+fun loadingSingersInfoFromCache(app: App, position: Long): Deferred<SingerInfo?> = async(CommonPool) {
     app.database.singerInfoDao().getSingerInfo(position)
 }
 

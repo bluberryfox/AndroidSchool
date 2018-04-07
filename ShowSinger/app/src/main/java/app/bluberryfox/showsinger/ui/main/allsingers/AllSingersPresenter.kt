@@ -21,7 +21,6 @@ class AllSingersPresenter(var context: Context, var activity: App) : AllSingersC
                 val cachedSingers = loadingSingersFromCache(activity).await()
                 if (cachedSingers.isNotEmpty()) {
                     singers.addAll(cachedSingers)
-
                 }
             } else {
                 val cloudSingersJob = loadSingers(Constants.URL)

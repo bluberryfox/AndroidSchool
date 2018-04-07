@@ -5,6 +5,6 @@ package app.bluberryfox.showsinger.util
  */
 class Constants{
     companion object {
-        const val URL = "http://192.168.1.11/backend/"
+        const val URL = "http://192.168.43.141/backend/"
     }
 }

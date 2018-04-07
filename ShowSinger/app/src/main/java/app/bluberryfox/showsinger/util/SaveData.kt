@@ -6,25 +6,14 @@ import app.bluberryfox.showsinger.data.SingerInfo
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.async
-import kotlin.coroutines.experimental.CoroutineContext
 
-fun saveSingers(
-        app: App,
-        singers: List<Singer>,
-        coroutineContext: CoroutineContext = CommonPool
-): Deferred<Unit> = async(coroutineContext) {
+fun saveSingers(app: App, singers: List<Singer>): Deferred<Unit> = async(CommonPool) {
     app.database.singersDao().insertAll(singers)
 }
-fun saveSingerInfo(
-        app:App,
-        singerInfo:SingerInfo,
-        coroutineContext: CoroutineContext = CommonPool
-):Deferred<Unit> = async(coroutineContext){
+fun saveSingerInfo(app:App, singerInfo:SingerInfo):Deferred<Unit> = async(CommonPool){
     app.database.singerInfoDao().insertSingerInfo(singerInfo)
 }
-fun saveSingerToFavorite(app:App,
-                   id:Long,
-                   coroutineContext: CoroutineContext = CommonPool):Deferred<Unit> = async(coroutineContext){
+fun saveSingerToFavorite(app:App, id:Long):Deferred<Unit> = async(CommonPool){
     app.database.singersDao().addToFavorite(id)
 }
 
